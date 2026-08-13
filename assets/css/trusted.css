@@ -1,0 +1,290 @@
+/* =====================================================
+   TRUSTED BRANDS
+===================================================== */
+
+.trusted{
+
+    padding:110px 0;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Section Glow */
+
+.trusted::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    top:-180px;
+    left:-180px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(56,189,248,.12),
+        transparent 70%
+    );
+
+    filter:blur(70px);
+
+    pointer-events:none;
+
+}
+
+.trusted::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    bottom:-150px;
+    right:-150px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(124,58,237,.12),
+        transparent 70%
+    );
+
+    filter:blur(70px);
+
+    pointer-events:none;
+
+}
+
+.trusted-title{
+
+    text-align:center;
+
+    font-size:34px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    margin-bottom:60px;
+
+}
+
+.logo-slider{
+
+    position:relative;
+
+    overflow:hidden;
+
+    width:100%;
+
+}
+
+/* Fade Left */
+
+.logo-slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:140px;
+    height:100%;
+
+    z-index:5;
+
+    background:linear-gradient(
+        to right,
+        #050816,
+        transparent
+    );
+
+}
+
+/* Fade Right */
+
+.logo-slider::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:140px;
+    height:100%;
+
+    z-index:5;
+
+    background:linear-gradient(
+        to left,
+        #050816,
+        transparent
+    );
+
+}
+
+.logo-track{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+    width:max-content;
+
+    animation:trustedScroll 24s linear infinite;
+
+}
+
+.logo-slider:hover .logo-track{
+
+    animation-play-state:paused;
+
+}
+
+.logo-box{
+
+    min-width:220px;
+
+    height:95px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+
+}
+
+.logo-box img{
+
+    max-width:135px;
+
+    max-height:42px;
+
+    object-fit:contain;
+
+    transition:.35s;
+
+}
+
+.logo-box:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#38BDF8;
+
+    background:rgba(56,189,248,.10);
+
+    box-shadow:
+        0 20px 45px rgba(56,189,248,.22);
+
+}
+
+.logo-box:hover img{
+
+    transform:scale(1.08);
+
+}
+
+@keyframes trustedScroll{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-50%);
+
+    }
+
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media(max-width:992px){
+
+    .trusted{
+
+        padding:90px 0;
+
+    }
+
+    .trusted-title{
+
+        font-size:28px;
+
+    }
+
+    .logo-box{
+
+        min-width:180px;
+
+        height:80px;
+
+    }
+
+    .logo-box img{
+
+        max-width:110px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .trusted-title{
+
+        font-size:22px;
+
+        line-height:1.5;
+
+    }
+
+    .logo-box{
+
+        min-width:150px;
+
+        height:70px;
+
+    }
+
+    .logo-box img{
+
+        max-width:90px;
+
+    }
+
+}

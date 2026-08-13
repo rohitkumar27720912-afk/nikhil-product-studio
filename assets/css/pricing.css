@@ -1,0 +1,574 @@
+/* =====================================================
+   PRICING SECTION
+====================================================== */
+
+.pricing{
+
+    padding:120px 0;
+
+    position:relative;
+
+}
+
+.pricing-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+    margin-top:60px;
+
+}
+
+/* =====================================================
+   CARD
+====================================================== */
+
+.price-card{
+
+    position:relative;
+
+    padding:45px 35px;
+
+    border-radius:26px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    overflow:hidden;
+
+    transition:.4s;
+
+}
+
+.price-card:hover{
+
+    transform:translateY(-14px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35),
+        0 0 35px rgba(56,189,248,.18);
+
+}
+
+/* =====================================================
+   FEATURED CARD
+====================================================== */
+
+.price-card.featured{
+
+    border:2px solid var(--primary);
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 45px rgba(56,189,248,.30);
+
+}
+
+.price-card.featured:hover{
+
+    transform:scale(1.08) translateY(-14px);
+
+}
+
+/* =====================================================
+   POPULAR BADGE
+====================================================== */
+
+.popular{
+
+    position:absolute;
+
+    top:22px;
+
+    right:-40px;
+
+    width:170px;
+
+    text-align:center;
+
+    padding:8px 0;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    transform:rotate(45deg);
+
+}
+
+/* =====================================================
+   TITLE
+====================================================== */
+
+.price-card h3{
+
+    font-size:28px;
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+}
+
+/* =====================================================
+   PRICE
+====================================================== */
+
+.price{
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    margin-bottom:30px;
+
+}
+
+/* =====================================================
+   FEATURES
+====================================================== */
+
+.price-card ul{
+
+    margin-bottom:35px;
+
+}
+
+.price-card ul li{
+
+    color:var(--gray);
+
+    padding:14px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    font-size:15px;
+
+}
+
+/* =====================================================
+   BUTTON
+====================================================== */
+
+.price-btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.price-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(56,189,248,.35);
+
+}
+
+/* =====================================================
+   GLOW EFFECT
+====================================================== */
+
+.price-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(56,189,248,.15),
+        transparent 60%
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.price-card:hover::before{
+
+    opacity:1;
+
+}
+
+/* =====================================================
+   BORDER EFFECT
+====================================================== */
+
+.price-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:26px;
+
+    padding:1px;
+
+    background:linear-gradient(
+        135deg,
+        transparent,
+        rgba(56,189,248,.45),
+        transparent
+    );
+
+    -webkit-mask:
+        linear-gradient(#a92929 0 0) content-box,
+        linear-gradient(#a21616 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.price-card:hover::after{
+
+    opacity:1;
+
+}
+
+/* =====================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:768px){
+
+.pricing{
+
+padding:90px 0;
+
+}
+
+.pricing-grid{
+
+grid-template-columns:1fr;
+
+gap:25px;
+
+}
+
+.price-card.featured{
+
+transform:none;
+
+}
+
+.price-card.featured:hover{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+.price-btn {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.price-card {
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================================================
+   PRICING CALCULATOR
+===================================================== */
+
+.pricing-calculator{
+
+    max-width:900px;
+
+    margin:0 auto 70px;
+
+    padding:40px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.25);
+
+}
+
+.calculator-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.calculator-header span{
+
+    color:#38BDF8;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.calculator-header h3{
+
+    font-size:30px;
+
+    margin:12px 0;
+
+    color:#fff;
+
+}
+
+.calculator-header p{
+
+    color:#94A3B8;
+
+}
+
+.quantity-options{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+}
+
+.quantity-btn{
+
+    padding:20px 15px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    background:rgba(255,255,255,.04);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.quantity-btn strong{
+
+    display:block;
+
+    font-size:17px;
+
+    margin-bottom:8px;
+
+}
+
+.quantity-btn span{
+
+    color:#38BDF8;
+
+    font-weight:700;
+
+}
+
+.quantity-btn:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#38BDF8;
+
+}
+
+.quantity-btn.active{
+
+    background:rgba(56,189,248,.12);
+
+    border-color:#38BDF8;
+
+    box-shadow:
+        0 15px 40px rgba(56,189,248,.15);
+
+}
+
+.calculator-result{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:30px 0;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(0,0,0,.20);
+
+}
+
+.calculator-result div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.calculator-result span{
+
+    color:#94A3B8;
+
+    font-size:14px;
+
+}
+
+.calculator-result strong{
+
+    font-size:28px;
+
+    color:#fff;
+
+}
+
+#estimated-price{
+
+    color:#38BDF8;
+
+}
+
+#pricing-whatsapp{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:16px;
+
+    border-radius:50px;
+
+    background:#25D366;
+
+    color:#fff;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+#pricing-whatsapp:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(37,211,102,.30);
+
+}
+
+@media(max-width:768px){
+
+    .pricing-calculator{
+
+        padding:25px 20px;
+
+    }
+
+    .quantity-options{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .calculator-result{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .quantity-options{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .calculator-header h3{
+
+        font-size:24px;
+
+    }
+
+}

@@ -1,0 +1,357 @@
+/* =====================================================
+   LARGE LAPTOP (1400px)
+====================================================== */
+
+@media (max-width:1400px){
+
+.container{
+
+max-width:1200px;
+
+}
+
+}
+
+/* =====================================================
+   LAPTOP (1200px)
+====================================================== */
+
+@media (max-width:1200px){
+
+.hero-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+gap:60px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-stats{
+
+justify-content:center;
+
+}
+
+.footer-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:40px;
+
+}
+
+}
+
+/* =====================================================
+   TABLET (992px)
+====================================================== */
+
+@media (max-width:992px){
+
+.navbar{
+
+padding:18px 30px;
+
+}
+
+.nav-links{
+
+gap:20px;
+
+}
+
+.hero{
+
+padding:120px 0 80px;
+
+}
+
+.hero h1{
+
+font-size:48px;
+
+line-height:1.2;
+
+}
+
+.section-title h2{
+
+font-size:38px;
+
+}
+
+.services-grid,
+.why-grid,
+.portfolio-grid,
+.testimonial-grid,
+.pricing-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.contact-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+/* =====================================================
+   MOBILE (768px)
+====================================================== */
+
+@media (max-width:768px){
+
+.container{
+
+width:92%;
+
+}
+
+.navbar{
+
+padding:16px 20px;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.nav-btn{
+
+display:none;
+
+}
+
+.hero{
+
+padding:100px 0 70px;
+
+min-height:auto;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.hero-buttons a{
+
+width:100%;
+
+text-align:center;
+
+}
+
+.hero-stats{
+
+flex-direction:column;
+
+align-items:center;
+
+gap:20px;
+
+}
+
+.stat{
+
+    width:calc(50% - 10px);
+
+    min-width:150px;
+
+}
+
+.section-title h2{
+
+font-size:30px;
+
+}
+
+.services-grid,
+.why-grid,
+.portfolio-grid,
+.testimonial-grid,
+.pricing-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-form{
+
+padding:30px 20px;
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.footer-social{
+
+justify-content:center;
+
+}
+
+}
+
+/* =====================================================
+   SMALL MOBILE (480px)
+====================================================== */
+
+@media (max-width:480px){
+
+.logo{
+
+font-size:24px;
+
+}
+
+.hero h1{
+
+font-size:32px;
+
+}
+
+.hero p{
+
+font-size:15px;
+
+}
+
+.section-title span{
+
+font-size:13px;
+
+}
+
+.section-title h2{
+
+font-size:26px;
+
+}
+
+.btn-primary,
+.btn-secondary{
+
+padding:15px 20px;
+
+font-size:15px;
+
+}
+
+.service-card,
+.why-card,
+.price-card,
+.testimonial-card{
+
+padding:25px;
+
+}
+
+.compare-container{
+
+height:240px;
+
+}
+
+.hero-stats{
+
+    flex-direction:column;
+
+}
+
+.stat{
+
+    width:100%;
+
+}
+
+.contact-form{
+
+padding:22px 18px;
+
+}
+
+.footer{
+
+padding:70px 0 25px;
+
+}
+
+.footer-bottom{
+
+font-size:13px;
+
+}
+
+}
+
+/* =====================================================
+   EXTRA SMALL DEVICES
+====================================================== */
+
+@media (max-width:360px){
+
+.hero h1{
+
+font-size:28px;
+
+}
+
+.logo{
+
+font-size:20px;
+
+}
+
+.section-title h2{
+
+font-size:22px;
+
+}
+
+}

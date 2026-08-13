@@ -1,0 +1,233 @@
+/* =====================================================
+   COMPARISON SECTION
+====================================================== */
+
+.comparison{
+
+    padding:120px 0;
+
+    position:relative;
+
+}
+
+.compare-wrapper{
+
+    margin-top:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.compare-container{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1000px;
+
+    height:600px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    background:#111827;
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.40);
+
+    user-select:none;
+
+}
+
+/* =====================================================
+   IMAGES
+====================================================== */
+
+.compare-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.compare-overlay{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:50%;
+
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+/* =====================================================
+   LABELS
+====================================================== */
+
+.label{
+
+    position:absolute;
+
+    top:20px;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    z-index:5;
+
+}
+
+.label.before{
+
+    left:20px;
+
+    background:#111827;
+
+}
+
+.label.after{
+
+    right:20px;
+
+    background:var(--primary);
+
+}
+
+/* =====================================================
+   SLIDER
+====================================================== */
+
+.slider{
+
+    position:absolute;
+
+    left:50%;
+
+    top:0;
+
+    width:4px;
+
+    height:100%;
+
+    background:#fff;
+
+    transform:translateX(-50%);
+
+    cursor:ew-resize;
+
+    z-index:10;
+
+}
+
+.slider-line{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    background:#fff;
+
+}
+
+.slider-button{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    border:4px solid #fff;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.35);
+
+}
+
+/* =====================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:992px){
+
+.compare-container{
+
+height:450px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.compare-container{
+
+height:320px;
+
+}
+
+.slider-button{
+
+width:46px;
+
+height:46px;
+
+font-size:18px;
+
+}
+
+.label{
+
+font-size:12px;
+
+padding:8px 14px;
+
+}
+
+}

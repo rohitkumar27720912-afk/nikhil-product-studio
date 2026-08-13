@@ -1,0 +1,263 @@
+/* =====================================================
+   TESTIMONIAL SECTION
+====================================================== */
+
+.testimonials{
+
+    padding:120px 0;
+
+    position:relative;
+
+}
+
+.testimonial-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+    margin-top:60px;
+
+}
+
+/* =====================================================
+   CARD
+====================================================== */
+
+.testimonial-card{
+
+    position:relative;
+
+    padding:40px 35px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    overflow:hidden;
+
+    transition:.4s;
+
+}
+
+.testimonial-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35),
+        0 0 30px rgba(56,189,248,.18);
+
+}
+
+/* =====================================================
+   GLOW EFFECT
+====================================================== */
+
+.testimonial-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(56,189,248,.18),
+        transparent 60%
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.testimonial-card:hover::before{
+
+    opacity:1;
+
+}
+
+/* =====================================================
+   STARS
+====================================================== */
+
+.stars{
+
+    color:#FFD54A;
+
+    font-size:22px;
+
+    margin-bottom:22px;
+
+    letter-spacing:3px;
+
+}
+
+/* =====================================================
+   REVIEW
+====================================================== */
+
+.testimonial-card p{
+
+    color:var(--gray);
+
+    line-height:1.9;
+
+    font-size:15px;
+
+    margin-bottom:30px;
+
+}
+
+/* =====================================================
+   CLIENT INFO
+====================================================== */
+
+.client{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+/* =====================================================
+   AVATAR
+====================================================== */
+
+.avatar{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #2563eb
+    );
+
+    box-shadow:
+        0 12px 28px rgba(56,189,248,.35);
+
+}
+
+/* =====================================================
+   CLIENT NAME
+====================================================== */
+
+.client h4{
+
+    color:#fff;
+
+    font-size:18px;
+
+    margin-bottom:4px;
+
+}
+
+.client span{
+
+    color:var(--gray);
+
+    font-size:14px;
+
+}
+
+/* =====================================================
+   BORDER EFFECT
+====================================================== */
+
+.testimonial-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:24px;
+
+    padding:1px;
+
+    background:linear-gradient(
+        135deg,
+        transparent,
+        rgba(56,189,248,.45),
+        transparent
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.testimonial-card:hover::after{
+
+    opacity:1;
+
+}
+
+/* =====================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:768px){
+
+.testimonials{
+
+padding:90px 0;
+
+}
+
+.testimonial-grid{
+
+grid-template-columns:1fr;
+
+gap:22px;
+
+}
+
+.testimonial-card{
+
+padding:30px 25px;
+
+}
+
+}

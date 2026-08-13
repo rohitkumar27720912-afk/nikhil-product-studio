@@ -1,0 +1,159 @@
+/* =====================================================
+   LOADER
+====================================================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050816;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:999999;
+
+    transition:.8s ease;
+
+}
+
+/* =====================================================
+   LOGO
+====================================================== */
+
+.loader-logo{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    letter-spacing:.5px;
+
+    margin-bottom:35px;
+
+    animation:logoFade 1s ease infinite alternate;
+
+}
+
+.loader-logo span{
+
+    color:var(--primary);
+
+}
+
+/* =====================================================
+   PROGRESS BAR
+====================================================== */
+
+.loader-line{
+
+    width:260px;
+
+    height:6px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.loader-fill{
+
+    width:0;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #38BDF8,
+        #7C3AED
+    );
+
+    border-radius:50px;
+
+    animation:loading 2.2s linear forwards;
+
+}
+
+/* =====================================================
+   HIDE
+====================================================== */
+
+.loader-hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+/* =====================================================
+   ANIMATIONS
+====================================================== */
+
+@keyframes loading{
+
+    0%{
+
+        width:0;
+
+    }
+
+    100%{
+
+        width:100%;
+
+    }
+
+}
+
+@keyframes logoFade{
+
+    from{
+
+        opacity:.7;
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(-6px);
+
+    }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:768px){
+
+.loader-logo{
+
+font-size:32px;
+
+}
+
+.loader-line{
+
+width:220px;
+
+}
+
+}
