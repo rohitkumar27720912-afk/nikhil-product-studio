@@ -1,15 +1,21 @@
 /* =====================================================
-   PORTFOLIO FILTER + LIGHTBOX
+   PORTFOLIO
+   FILTER + LIGHTBOX + BEFORE/AFTER SLIDER
+   NO ZOOM
 ===================================================== */
 
 function initPortfolio() {
 
-    /* ==========================
+    /* =================================================
        FILTER
-    ========================== */
+    ================================================= */
 
-    const buttons = document.querySelectorAll(".filter-btn");
-    const cards = document.querySelectorAll(".portfolio-card");
+    const buttons =
+        document.querySelectorAll(".filter-btn");
+
+    const cards =
+        document.querySelectorAll(".portfolio-card");
+
 
     buttons.forEach(button => {
 
@@ -21,31 +27,44 @@ function initPortfolio() {
 
             button.classList.add("active");
 
-            const filter = button.dataset.filter;
+            const filter =
+                button.dataset.filter;
+
 
             cards.forEach(card => {
 
-                const category = card.dataset.category;
+                const category =
+                    card.dataset.category;
 
-                if (filter === "all" || category === filter) {
+
+                if (
+                    filter === "all" ||
+                    category === filter
+                ) {
 
                     card.style.display = "block";
 
                     requestAnimationFrame(() => {
 
                         card.style.opacity = "1";
-                        card.style.transform = "scale(1)";
+
+                        card.style.transform =
+                            "scale(1)";
 
                     });
 
                 } else {
 
                     card.style.opacity = "0";
-                    card.style.transform = "scale(.9)";
+
+                    card.style.transform =
+                        "scale(.92)";
+
 
                     setTimeout(() => {
 
-                        card.style.display = "none";
+                        card.style.display =
+                            "none";
 
                     }, 250);
 
@@ -58,87 +77,390 @@ function initPortfolio() {
     });
 
 
-    /* ==========================
+    /* =================================================
+       BEFORE / AFTER SLIDERS
+    ================================================= */
+
+    const sliders =
+        document.querySelectorAll(
+            ".portfolio .compare-container"
+        );
+
+
+    sliders.forEach(container => {
+
+        const overlay =
+            container.querySelector(
+                ".compare-overlay"
+            );
+
+        const slider =
+            container.querySelector(
+                ".compare-slider"
+            );
+
+        const beforeImage =
+            container.querySelector(
+                ".compare-before"
+            );
+
+
+        if (
+            !overlay ||
+            !slider ||
+            !beforeImage
+        ) return;
+
+
+        let dragging = false;
+
+
+        /* =============================================
+           FIX IMAGE SIZE
+           This is what prevents the zoom effect.
+        ============================================= */
+
+        function fixBeforeImageSize() {
+
+            const width =
+                container.getBoundingClientRect().width;
+
+            const height =
+                container.getBoundingClientRect().height;
+
+
+            beforeImage.style.width =
+                width + "px";
+
+            beforeImage.style.height =
+                height + "px";
+
+            beforeImage.style.maxWidth =
+                "none";
+
+        }
+
+
+        /* =============================================
+           UPDATE SLIDER
+        ============================================= */
+
+        function updateSlider(clientX) {
+
+            const rect =
+                container.getBoundingClientRect();
+
+
+            let x =
+                clientX - rect.left;
+
+
+            if (x < 0) {
+                x = 0;
+            }
+
+
+            if (x > rect.width) {
+                x = rect.width;
+            }
+
+
+            const percent =
+                (x / rect.width) * 100;
+
+
+            overlay.style.width =
+                percent + "%";
+
+
+            slider.style.left =
+                percent + "%";
+
+        }
+
+
+        /* Initial */
+
+        fixBeforeImageSize();
+
+
+        /* =============================================
+           MOUSE
+        ============================================= */
+
+        slider.addEventListener(
+            "mousedown",
+            e => {
+
+                e.preventDefault();
+
+                dragging = true;
+
+            }
+        );
+
+
+        window.addEventListener(
+            "mousemove",
+            e => {
+
+                if (!dragging) return;
+
+                updateSlider(e.clientX);
+
+            }
+        );
+
+
+        window.addEventListener(
+            "mouseup",
+            () => {
+
+                dragging = false;
+
+            }
+        );
+
+
+        /* =============================================
+           TOUCH / MOBILE
+        ============================================= */
+
+        slider.addEventListener(
+            "touchstart",
+            e => {
+
+                e.preventDefault();
+
+                dragging = true;
+
+            },
+            { passive: false }
+        );
+
+
+        window.addEventListener(
+            "touchmove",
+            e => {
+
+                if (!dragging) return;
+
+
+                e.preventDefault();
+
+                updateSlider(
+                    e.touches[0].clientX
+                );
+
+            },
+            { passive: false }
+        );
+
+
+        window.addEventListener(
+            "touchend",
+            () => {
+
+                dragging = false;
+
+            }
+        );
+
+
+        /* =============================================
+           CLICK / TAP ANYWHERE
+        ============================================= */
+
+        container.addEventListener(
+            "click",
+            e => {
+
+                if (
+                    e.target.closest(
+                        ".view-btn"
+                    )
+                ) return;
+
+
+                updateSlider(e.clientX);
+
+            }
+        );
+
+
+        /* =============================================
+           RESIZE
+        ============================================= */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                fixBeforeImageSize();
+
+            }
+        );
+
+    });
+
+
+    /* =================================================
        LIGHTBOX
-    ========================== */
+    ================================================= */
 
-    const lightbox = document.querySelector(".lightbox");
-    const lightboxImage = document.querySelector(".lightbox-image");
-    const lightboxClose = document.querySelector(".lightbox-close");
+    const lightbox =
+        document.querySelector(".lightbox");
 
-    if (!lightbox || !lightboxImage || !lightboxClose) return;
+    const lightboxImage =
+        document.querySelector(
+            ".lightbox-image"
+        );
 
-
-    /* Click Image */
-
-    document.querySelectorAll(".portfolio-card img").forEach(img => {
-
-        img.addEventListener("click", () => {
-
-            lightbox.classList.add("active");
-
-            lightboxImage.src = img.src;
-
-        });
-
-    });
+    const lightboxClose =
+        document.querySelector(
+            ".lightbox-close"
+        );
 
 
-    /* View Button */
-
-    document.querySelectorAll(".view-btn").forEach(btn => {
-
-        btn.addEventListener("click", (e) => {
-
-            e.preventDefault();
-
-            const img = btn
-                .closest(".portfolio-card")
-                .querySelector(".compare-after");
-
-            if (!img) return;
-
-            lightbox.classList.add("active");
-
-            lightboxImage.src = img.src;
-
-        });
-
-    });
+    if (
+        lightbox &&
+        lightboxImage &&
+        lightboxClose
+    ) {
 
 
-    /* Close */
+        /* Image click */
 
-    lightboxClose.addEventListener("click", () => {
+        document
+            .querySelectorAll(
+                ".portfolio-card img"
+            )
+            .forEach(img => {
 
-        lightbox.classList.remove("active");
+                img.addEventListener(
+                    "click",
+                    e => {
 
-    });
+                        e.stopPropagation();
+
+                        lightbox.classList.add(
+                            "active"
+                        );
+
+                        lightboxImage.src =
+                            img.src;
+
+                    }
+                );
+
+            });
 
 
-    /* Click Outside */
+        /* View Project */
 
-    lightbox.addEventListener("click", (e) => {
+        document
+            .querySelectorAll(".view-btn")
+            .forEach(btn => {
 
-        if (e.target === lightbox) {
+                btn.addEventListener(
+                    "click",
+                    e => {
 
-            lightbox.classList.remove("active");
+                        e.preventDefault();
 
-        }
+                        const img =
+                            btn
+                                .closest(
+                                    ".portfolio-card"
+                                )
+                                .querySelector(
+                                    ".compare-after"
+                                );
 
-    });
+
+                        if (!img) return;
 
 
-    /* ESC Key */
+                        lightbox.classList.add(
+                            "active"
+                        );
 
-    document.addEventListener("keydown", (e) => {
+                        lightboxImage.src =
+                            img.src;
 
-        if (e.key === "Escape") {
+                    }
+                );
 
-            lightbox.classList.remove("active");
+            });
 
-        }
 
-    });
+        /* Close */
+
+        lightboxClose.addEventListener(
+            "click",
+            () => {
+
+                lightbox.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        /* Outside click */
+
+        lightbox.addEventListener(
+            "click",
+            e => {
+
+                if (
+                    e.target === lightbox
+                ) {
+
+                    lightbox.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ESC */
+
+        document.addEventListener(
+            "keydown",
+            e => {
+
+                if (
+                    e.key === "Escape"
+                ) {
+
+                    lightbox.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
 
 }
+
+
+/* =====================================================
+   AUTO INITIALIZE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        initPortfolio();
+
+    }
+);

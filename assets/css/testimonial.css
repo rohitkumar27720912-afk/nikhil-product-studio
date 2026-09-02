@@ -94,7 +94,7 @@
 
 .stars{
 
-    color:#FFD54A;
+    color:#f4bc06;
 
     font-size:22px;
 
@@ -165,7 +165,7 @@
     );
 
     box-shadow:
-        0 12px 28px rgba(56,189,248,.35);
+        0 12px 28px rgba(1, 2, 3, 0.35);
 
 }
 

@@ -1,97 +1,218 @@
 /* =====================================================
    BEFORE / AFTER COMPARISON SLIDER
+   No Zoom Effect
 ===================================================== */
 
 function initComparison() {
 
-    const containers = document.querySelectorAll(".compare-container");
+    const containers =
+        document.querySelectorAll(".compare-container");
 
     containers.forEach(container => {
 
-        const overlay = container.querySelector(".compare-overlay");
+        const overlay =
+            container.querySelector(".compare-overlay");
+
         const slider =
-            container.querySelector(".compare-slider") ||
             container.querySelector(".slider");
 
         if (!overlay || !slider) return;
 
+        const beforeImage =
+            overlay.querySelector(".compare-image");
+
+        if (!beforeImage) return;
+
         let dragging = false;
 
-        function update(clientX) {
 
-            const rect = container.getBoundingClientRect();
+        /* =================================================
+           FIX IMAGE SIZE
+           BEFORE image always remains same size
+           as comparison container.
+        ================================================= */
 
-            let x = clientX - rect.left;
+        function fixImageSize() {
 
-            if (x < 0) x = 0;
-            if (x > rect.width) x = rect.width;
+            const width = container.clientWidth;
+            const height = container.clientHeight;
 
-            const percent = (x / rect.width) * 100;
+            beforeImage.style.width = width + "px";
+            beforeImage.style.height = height + "px";
 
-            overlay.style.width = percent + "%";
-
-            slider.style.left = percent + "%";
+            beforeImage.style.maxWidth = "none";
+            beforeImage.style.maxHeight = "none";
 
         }
 
-        /* =========================
-           Mouse
-        ========================= */
 
-        slider.addEventListener("mousedown", () => {
+        /* =================================================
+           UPDATE SLIDER
+        ================================================= */
 
-            dragging = true;
+        function update(clientX) {
 
-        });
+            const rect =
+                container.getBoundingClientRect();
 
-        window.addEventListener("mouseup", () => {
+            let x =
+                clientX - rect.left;
 
-            dragging = false;
 
-        });
+            /* Keep slider inside container */
 
-        window.addEventListener("mousemove", (e) => {
+            if (x < 0) {
+                x = 0;
+            }
 
-            if (!dragging) return;
+            if (x > rect.width) {
+                x = rect.width;
+            }
 
-            update(e.clientX);
 
-        });
+            const percent =
+                (x / rect.width) * 100;
 
-        /* =========================
-           Touch
-        ========================= */
 
-        slider.addEventListener("touchstart", () => {
+            /* BEFORE visible area */
 
-            dragging = true;
+            overlay.style.width =
+                percent + "%";
 
-        });
 
-        window.addEventListener("touchend", () => {
+            /* Slider line */
 
-            dragging = false;
+            slider.style.left =
+                percent + "%";
 
-        });
+        }
 
-        window.addEventListener("touchmove", (e) => {
 
-            if (!dragging) return;
+        /* =================================================
+           POINTER DOWN
+        ================================================= */
 
-            update(e.touches[0].clientX);
+        slider.addEventListener(
+            "pointerdown",
+            function (e) {
 
-        });
+                dragging = true;
 
-        /* =========================
-           Click Anywhere
-        ========================= */
+                slider.setPointerCapture(
+                    e.pointerId
+                );
 
-        container.addEventListener("click", (e) => {
+                e.preventDefault();
 
-            update(e.clientX);
+            }
+        );
 
-        });
+
+        /* =================================================
+           POINTER MOVE
+        ================================================= */
+
+        slider.addEventListener(
+            "pointermove",
+            function (e) {
+
+                if (!dragging) return;
+
+                update(e.clientX);
+
+            }
+        );
+
+
+        /* =================================================
+           POINTER UP
+        ================================================= */
+
+        slider.addEventListener(
+            "pointerup",
+            function () {
+
+                dragging = false;
+
+            }
+        );
+
+
+        slider.addEventListener(
+            "pointercancel",
+            function () {
+
+                dragging = false;
+
+            }
+        );
+
+
+        /* =================================================
+           CLICK ANYWHERE
+        ================================================= */
+
+        container.addEventListener(
+            "pointerdown",
+            function (e) {
+
+                /*
+                   Agar directly container par click/touch
+                   karein to slider wahan chala jayega.
+                */
+
+                if (
+                    e.target === slider ||
+                    slider.contains(e.target)
+                ) {
+                    return;
+                }
+
+                update(e.clientX);
+
+            }
+        );
+
+
+        /* =================================================
+           INITIALIZE
+        ================================================= */
+
+        fixImageSize();
+
+        update(
+            container.getBoundingClientRect().left +
+            container.getBoundingClientRect().width / 2
+        );
+
+
+        /* =================================================
+           RESIZE
+        ================================================= */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                fixImageSize();
+
+            }
+        );
 
     });
 
 }
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initComparison();
+
+    }
+);
