@@ -27,7 +27,7 @@
 
     border-radius:22px;
 
-    background:rgba(17,24,39,.70);
+    background:rgb(234, 236, 239);
 
     backdrop-filter:blur(20px);
 
@@ -92,7 +92,7 @@
 
 .nav-links a:hover{
 
-    color:#ffffff;
+    color:#000000;
 
 }
 
@@ -142,7 +142,7 @@
 
     background:var(--primary);
 
-    color:#fff;
+    color:#000000;
 
     font-size:15px;
 
@@ -200,7 +200,7 @@
 
     border:1px solid rgba(255,255,255,.08);
 
-    color:#fff;
+    color:#0089de;
 
     font-size:20px;
 
@@ -216,4 +216,25 @@
 
     border-color:var(--primary);
 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
 }

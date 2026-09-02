@@ -26,7 +26,7 @@
 
     position:relative;
 
-    width:100%;
+    width:75%;
 
     max-width:550px;
 
@@ -62,7 +62,7 @@
     border-radius:35px;
 
     background:radial-gradient(circle,
-        rgba(56,189,248,.18),
+        rgb(56,189,248,.18),
         transparent 70%);
 
     filter:blur(50px);
@@ -70,6 +70,7 @@
     z-index:-1;
 
 }
+
 
 /* =====================================================
    HERO STATS
@@ -101,7 +102,7 @@
 
     border-radius:20px;
 
-    background:rgba(255,255,255,.06);
+    background:rgb(241, 241, 241);
 
     border:1px solid rgba(255,255,255,.08);
 
@@ -125,7 +126,7 @@
     border-color:#38BDF8;
 
     box-shadow:
-        0 25px 60px rgba(56,189,248,.22);
+        0 25px 60px rgb(56,189,248,.22);
 
 }
 
@@ -347,10 +348,10 @@ width:100%;
     top:-200px;
 
     background:radial-gradient(circle,
-    rgba(56,189,248,.18),
+    rgba(124,58,237,.15),
     transparent 70%);
 
-    filter:blur(80px);
+    filter:blur(0px);
 
 }
 
@@ -367,7 +368,7 @@ width:100%;
     bottom:-250px;
 
     background:radial-gradient(circle,
-    rgba(124,58,237,.15),
+    rgb(124,58,237,.15),
     transparent 70%);
 
     filter:blur(80px);
@@ -614,4 +615,149 @@ width:100%;
 .hero-container {
     position: relative;
     z-index: 5;
+}
+
+/* =====================================================
+   HERO BRAND STATEMENT
+===================================================== */
+
+.hero-statement {
+    position: relative;
+
+    width: 100%;
+    max-width: 620px;
+
+    margin-top: 22px;
+    margin-left: auto;
+
+    padding: 22px 28px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* LEFT ACCENT LINE */
+
+.hero-statement::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 18px;
+    bottom: 18px;
+
+    width: 3px;
+
+    border-radius: 10px;
+
+    background: var(--primary);
+
+    box-shadow:
+        0 0 15px var(--primary),
+        0 0 30px rgba(56, 189, 248, 0.25);
+}
+
+
+/* TEXT */
+
+.hero-statement p {
+
+    margin: 0;
+
+    padding-left: 12px;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    letter-spacing: 0.1px;
+}
+
+
+/* HOVER */
+
+.hero-statement:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(56, 189, 248, 0.30);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.30),
+        0 0 30px rgba(56, 189, 248, 0.08);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .hero-statement {
+
+        margin-top: 18px;
+
+        padding: 18px 20px;
+
+        border-radius: 18px;
+
+    }
+
+    .hero-statement p {
+
+        padding-left: 10px;
+
+        font-size: 14px;
+
+        line-height: 1.65;
+
+    }
+
+    .hero-statement::before {
+
+        top: 15px;
+        bottom: 15px;
+
+    }
+
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-statement {
+    position: relative;
 }

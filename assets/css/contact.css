@@ -81,7 +81,7 @@
 
     background:linear-gradient(
         135deg,
-        rgba(56,189,248,.12),
+        rgb(174, 103, 180),
         transparent 70%
     );
 
@@ -146,9 +146,9 @@
 
     border:1px solid rgba(255,255,255,.08);
 
-    background:#0f172a;
+    background:#f4f5f6;
 
-    color:#fff;
+    color:#000000;
 
     font-size:15px;
 
