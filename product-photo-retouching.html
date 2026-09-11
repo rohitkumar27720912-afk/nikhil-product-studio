@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Professional Product Photo Retouching | DesignHaven</title>
+
+    <meta
+        name="description"
+        content="Professional product photo retouching by DesignHaven. Enhance colors, lighting, shadows, details and product presentation for Amazon, Flipkart, Meesho, Shopify and eCommerce brands."
+    >
+
+    <meta
+        name="keywords"
+        content="product photo retouching, product image editing, ecommerce photo editing, Amazon product retouching, Shopify product editing, Meesho product images, product photo enhancement"
+    >
+
+    <meta name="author" content="DesignHaven">
+
+    <link
+        rel="canonical"
+        href="https://designhaven.pages.dev/product-photo-retouching"
+    >
+
+    <link rel="icon"
+        type="image/png"
+        href="assets/images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #fcfaf6;
+            color: #29251f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        :root {
+            --cream: #fcfaf6;
+            --white: #ffffff;
+            --beige: #eee4d7;
+            --beige-light: #f5eee6;
+            --beige-dark: #d8c6b2;
+
+            --brown: #302921;
+            --brown-light: #574a3e;
+
+            --gold: #a27b55;
+            --gold-light: #c29a72;
+
+            --text: #302a24;
+            --muted: #776e64;
+
+            --border: #e7ddd2;
+
+            --shadow:
+                0 25px 70px rgba(73, 52, 32, 0.10);
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+
+            background: rgba(252, 250, 246, 0.90);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid rgba(216, 198, 178, 0.55);
+        }
+
+        .nav-container {
+            width: min(1200px, 100%);
+
+            margin: auto;
+
+            padding: 17px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* =====================================================
+           DESIGNHAVEN LOGO
+        ===================================================== */
+
+        .brand {
+          display: flex;
+          align-items: center;
+}
+
+         .brand-logo {
+           width: 48px;
+           height: 48px;
+            object-fit: contain;
+            display: block;
+         }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #302921,
+                    #806247
+                );
+
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            box-shadow:
+                0 8px 20px rgba(73, 52, 32, 0.18);
+
+            position: relative;
+        }
+
+        .logo-mark::after {
+            content: "";
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            background: #d8b18a;
+
+            border-radius: 50%;
+
+            top: 5px;
+            right: 5px;
+        }
+
+        .brand-name {
+            font-size: 21px;
+            font-weight: 700;
+
+            letter-spacing: -0.5px;
+
+            color: var(--brown);
+        }
+
+        .brand-name span {
+            color: var(--gold);
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 29px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+
+            color: #62594f;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            padding: 11px 19px;
+
+            border-radius: 50px;
+
+            background: var(--brown);
+
+            color: #fff !important;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            width: min(1200px, 100%);
+
+            min-height: 720px;
+
+            margin: auto;
+
+            padding: 85px 25px 90px;
+
+            display: grid;
+
+            grid-template-columns: 0.95fr 1.05fr;
+
+            gap: 75px;
+
+            align-items: center;
+        }
+
+
+        /* =====================================================
+           HERO LEFT
+        ===================================================== */
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            border-radius: 50px;
+
+            background: var(--beige-light);
+
+            border: 1px solid var(--border);
+
+            color: #8b6749;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 23px;
+        }
+
+        .eyebrow::before {
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(48px, 6vw, 76px);
+
+            line-height: 1.02;
+
+            letter-spacing: -2.7px;
+
+            color: var(--brown);
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-description {
+            max-width: 570px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .hero-buttons {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 38px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 0 22px;
+
+            border-radius: 50px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--brown);
+
+            color: #fff;
+
+            box-shadow:
+                0 12px 30px rgba(48, 41, 33, 0.16);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold);
+
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--beige-dark);
+
+            background: rgba(255,255,255,0.55);
+
+            color: var(--brown-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+
+            color: var(--gold);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           HERO MINI STATS
+        ===================================================== */
+
+        .hero-stats {
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .hero-stat strong {
+            display: block;
+
+            font-size: 19px;
+
+            color: var(--brown);
+        }
+
+        .hero-stat span {
+            display: block;
+
+            font-size: 11px;
+
+            color: #8b8176;
+
+            margin-top: 2px;
+        }
+
+        .stat-divider {
+            width: 1px;
+
+            height: 35px;
+
+            background: var(--border);
+        }
+
+
+        /* =====================================================
+           HERO IMAGE
+        ===================================================== */
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+
+            background: #eadbca;
+
+            filter: blur(5px);
+
+            top: -80px;
+            right: -50px;
+
+            opacity: 0.55;
+        }
+
+        .hero-image-frame {
+            position: relative;
+
+            z-index: 2;
+
+            padding: 14px;
+
+            background: rgba(255,255,255,0.78);
+
+            border: 1px solid #e4d8cb;
+
+            border-radius: 30px;
+
+            box-shadow: var(--shadow);
+
+            transform: rotate(1.1deg);
+        }
+
+        .hero-image {
+            height: 475px;
+
+            overflow: hidden;
+
+            border-radius: 21px;
+
+            background: var(--beige);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .hero-floating {
+            position: absolute;
+
+            z-index: 4;
+
+            bottom: 28px;
+            left: -30px;
+
+            padding: 15px 18px;
+
+            background: rgba(255,255,255,0.95);
+
+            border: 1px solid var(--border);
+
+            border-radius: 17px;
+
+            box-shadow:
+                0 18px 45px rgba(68, 48, 30, 0.13);
+        }
+
+        .hero-floating strong {
+            display: block;
+
+            font-size: 21px;
+
+            color: var(--brown);
+        }
+
+        .hero-floating span {
+            display: block;
+
+            font-size: 11px;
+
+            color: #81766a;
+        }
+
+
+        /* =====================================================
+           TRUST BAR
+        ===================================================== */
+
+        .trust-bar {
+            border-top: 1px solid var(--border);
+
+            border-bottom: 1px solid var(--border);
+
+            background: #fffdf9;
+        }
+
+        .trust-inner {
+            width: min(1100px, 100%);
+
+            margin: auto;
+
+            padding: 26px 25px;
+
+            text-align: center;
+        }
+
+        .trust-title {
+            font-size: 10px;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+
+            color: #9a8d80;
+
+            font-weight: 700;
+
+            margin-bottom: 17px;
+        }
+
+        .trust-list {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 35px;
+        }
+
+        .trust-list span {
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #665d54;
+        }
+
+
+        /* =====================================================
+           COMMON SECTION
+        ===================================================== */
+
+        .section {
+            width: min(1200px, 100%);
+
+            margin: auto;
+
+            padding: 105px 25px;
+        }
+
+        .section-heading {
+            max-width: 720px;
+
+            margin: 0 auto 55px;
+
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--gold);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(37px, 5vw, 55px);
+
+            line-height: 1.08;
+
+            letter-spacing: -1.5px;
+
+            color: var(--brown);
+
+            margin-bottom: 17px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           SERVICE GRID
+        ===================================================== */
+
+        .service-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .service-card {
+            padding: 31px;
+
+            background: #fffefa;
+
+            border: 1px solid var(--border);
+
+            border-radius: 23px;
+
+            transition: 0.35s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+
+            border-color: #d7c2aa;
+
+            box-shadow:
+                0 20px 50px rgba(72, 51, 31, 0.09);
+        }
+
+        .service-icon {
+            width: 51px;
+            height: 51px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: var(--beige-light);
+
+            border: 1px solid #e6d8ca;
+
+            font-size: 21px;
+
+            margin-bottom: 22px;
+        }
+
+        .service-card h3 {
+            color: var(--brown);
+
+            font-size: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           BEFORE AFTER SECTION
+        ===================================================== */
+
+        .comparison-section {
+            background:
+                linear-gradient(
+                    180deg,
+                    #f3ebe2 0%,
+                    #eee2d5 100%
+                );
+
+            border-top: 1px solid #e7dbce;
+
+            border-bottom: 1px solid #e7dbce;
+        }
+
+        .comparison-section .section {
+            padding-top: 105px;
+            padding-bottom: 105px;
+        }
+
+        .comparison-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+
+            max-width: 1060px;
+
+            margin: auto;
+        }
+
+        .comparison-card {
+            padding: 12px;
+
+            background: rgba(255,255,255,0.75);
+
+            border: 1px solid #ded0c1;
+
+            border-radius: 27px;
+
+            box-shadow:
+                0 18px 55px rgba(72, 51, 31, 0.08);
+        }
+
+        .comparison-image {
+            height: 390px;
+
+            overflow: hidden;
+
+            border-radius: 19px;
+
+            background: #e4d7c9;
+        }
+
+        .comparison-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s ease;
+        }
+
+        .comparison-card:hover .comparison-image img {
+            transform: scale(1.025);
+        }
+
+        .comparison-label {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 17px 8px 7px;
+        }
+
+        .comparison-label strong {
+            font-size: 14px;
+
+            color: var(--brown);
+        }
+
+        .comparison-label span {
+            font-size: 11px;
+
+            color: #948679;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.8px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           IMAGE NOTE
+        ===================================================== */
+
+        .image-note {
+            text-align: center;
+
+            margin-top: 28px;
+
+            color: #83776a;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           PROCESS
+        ===================================================== */
+
+        .process-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .process-card {
+            position: relative;
+
+            padding: 29px;
+
+            background: #fffefa;
+
+            border: 1px solid var(--border);
+
+            border-radius: 21px;
+        }
+
+        .process-number {
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.3px;
+
+            color: var(--gold);
+
+            margin-bottom: 22px;
+        }
+
+        .process-card h3 {
+            color: var(--brown);
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           WHY DESIGNHAVEN
+        ===================================================== */
+
+        .why-section {
+            background: #fffdf9;
+        }
+
+        .why-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .why-content h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(36px, 5vw, 54px);
+
+            line-height: 1.1;
+
+            color: var(--brown);
+
+            margin-bottom: 20px;
+        }
+
+        .why-content > p {
+            color: var(--muted);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin-bottom: 28px;
+        }
+
+        .benefits {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+        }
+
+        .benefit {
+            padding: 17px;
+
+            border-radius: 15px;
+
+            background: var(--beige-light);
+
+            border: 1px solid #e7dcd0;
+        }
+
+        .benefit strong {
+            display: block;
+
+            color: var(--brown);
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+        .benefit span {
+            display: block;
+
+            color: #82776b;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           WHY VISUAL
+        ===================================================== */
+
+        .why-visual {
+            position: relative;
+
+            min-height: 440px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eee2d5,
+                    #faf7f2
+                );
+
+            border: 1px solid var(--border);
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .visual-card {
+            width: 72%;
+
+            padding: 30px;
+
+            background: rgba(255,255,255,0.78);
+
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255,255,255,0.9);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 25px 60px rgba(70, 50, 30, 0.11);
+
+            transform: rotate(-3deg);
+        }
+
+        .visual-card-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .visual-card-logo {
+            font-weight: 800;
+
+            color: var(--brown);
+        }
+
+        .visual-card-logo span {
+            color: var(--gold);
+        }
+
+        .visual-status {
+            padding: 5px 9px;
+
+            border-radius: 30px;
+
+            background: #eee4d7;
+
+            color: #866445;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+        .visual-lines {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .visual-line {
+            height: 9px;
+
+            border-radius: 20px;
+
+            background: #e6d9cb;
+        }
+
+        .visual-line.short {
+            width: 62%;
+        }
+
+        .visual-line.medium {
+            width: 80%;
+        }
+
+        .visual-line.long {
+            width: 94%;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta-wrapper {
+            padding: 40px 25px 105px;
+
+            background: var(--cream);
+        }
+
+        .cta-box {
+            width: min(1150px, 100%);
+
+            margin: auto;
+
+            padding: 78px 35px;
+
+            text-align: center;
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #302921 0%,
+                    #514234 100%
+                );
+
+            color: #fff;
+
+            box-shadow:
+                0 30px 80px rgba(55, 39, 24, 0.18);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background: rgba(211, 174, 138, 0.11);
+
+            top: -170px;
+            right: -70px;
+        }
+
+        .cta-box::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.04);
+
+            bottom: -150px;
+            left: -50px;
+        }
+
+        .cta-box > * {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .cta-box h2 {
+            max-width: 760px;
+
+            margin: auto;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(37px, 5vw, 58px);
+
+            line-height: 1.08;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 18px;
+        }
+
+        .cta-box p {
+            max-width: 650px;
+
+            margin: 0 auto 30px;
+
+            color: #d9d0c7;
+
+            font-size: 15px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            padding: 0 25px;
+
+            border-radius: 50px;
+
+            background: #f1e4d5;
+
+            color: #332a22;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition: 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #f7f2eb;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            width: min(1200px, 100%);
+
+            margin: auto;
+
+            padding: 30px 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+        .footer-mark {
+            width: 29px;
+            height: 29px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: var(--brown);
+
+            color: white;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        .footer-name {
+            font-size: 15px;
+
+            font-weight: 700;
+
+            color: var(--brown);
+        }
+
+        .footer-name span {
+            color: var(--gold);
+        }
+
+        .copyright {
+            color: #8b8177;
+
+            font-size: 12px;
+        }
+
+        .footer-logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+     }
+
+
+        /* =====================================================
+           MOBILE NAV
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a:not(.nav-cta) {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                gap: 55px;
+
+                padding-top: 65px;
+            }
+
+            .hero h1 {
+                font-size: 58px;
+            }
+
+            .hero-visual {
+                max-width: 750px;
+
+                width: 100%;
+
+                margin: auto;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .nav-container {
+                padding: 14px 18px;
+            }
+
+            .logo-mark {
+                width: 35px;
+                height: 35px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .nav-cta {
+                padding: 9px 14px;
+            }
+
+
+            .hero {
+                padding: 55px 20px 70px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+
+                letter-spacing: -1.6px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-buttons {
+                align-items: stretch;
+
+                flex-direction: column;
+
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-stats {
+                gap: 18px;
+            }
+
+            .hero-stat strong {
+                font-size: 17px;
+            }
+
+            .hero-image {
+                height: 330px;
+            }
+
+            .hero-floating {
+                left: 10px;
+
+                bottom: 18px;
+            }
+
+
+            .trust-inner {
+                padding: 23px 18px;
+            }
+
+            .trust-list {
+                gap: 16px 25px;
+            }
+
+            .trust-list span {
+                font-size: 12px;
+            }
+
+
+            .section {
+                padding: 75px 20px;
+            }
+
+            .section-heading {
+                margin-bottom: 40px;
+            }
+
+            .section-heading h2 {
+                font-size: 38px;
+            }
+
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-image {
+                height: 280px;
+            }
+
+            .comparison-label {
+                padding: 14px 7px 6px;
+            }
+
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .why-visual {
+                min-height: 350px;
+            }
+
+            .visual-card {
+                width: 82%;
+            }
+
+
+            .cta-wrapper {
+                padding: 25px 20px 75px;
+            }
+
+            .cta-box {
+                padding: 55px 22px;
+            }
+
+            .cta-box h2 {
+                font-size: 38px;
+            }
+
+
+            .footer-inner {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+
+                <img
+                 src="assets/images/logo.png"
+                 alt="DesignHaven Logo"
+                 class="brand-logo"
+                >
+
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="index.html#services">
+                    Services
+                </a>
+
+                <a href="index.html#portfolio">
+                    Portfolio
+                </a>
+
+                <a href="index.html#contact">
+                    Contact
+                </a>
+
+                <a
+                    href="index.html#contact"
+                    class="nav-cta"
+                >
+                    Get Started
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <main>
+
+        <section class="hero">
+
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Professional Product Retouching
+                </div>
+
+
+                <h1>
+
+                    Make Every
+                    Product Look
+                    <span>Exceptional.</span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    We transform ordinary product photographs into
+                    polished, premium visuals through precise retouching,
+                    color correction, lighting enhancement and detail
+                    refinement.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="index.html#contact"
+                        class="btn btn-primary"
+                    >
+                        Start a Project →
+                    </a>
+
+
+                    <a
+                        href="#services"
+                        class="btn btn-outline"
+                    >
+                        Explore Services
+                    </a>
+
+                </div>
+
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            500+
+                        </strong>
+
+                        <span>
+                            Images Edited
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-divider"></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            100+
+                        </strong>
+
+                        <span>
+                            Happy Clients
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-divider"></div>
+
+
+                    <div class="hero-stat">
+
+                        <strong>
+                            24h
+                        </strong>
+
+                        <span>
+                            Fast Delivery
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HERO IMAGE -->
+
+            <div class="hero-visual">
+
+                <div class="hero-image-frame">
+
+                    <div class="hero-image">
+
+                        <img
+                            src="assets/images/after.png"
+                            alt="Professionally retouched product image"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-floating">
+
+                    <strong>
+                        Premium Finish
+                    </strong>
+
+                    <span>
+                        Detail-focused product editing
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TRUST BAR
+        ===================================================== -->
+
+        <section class="trust-bar">
+
+            <div class="trust-inner">
+
+                <div class="trust-title">
+                    Built for modern eCommerce
+                </div>
+
+
+                <div class="trust-list">
+
+                    <span>
+                        Amazon
+                    </span>
+
+                    <span>
+                        Flipkart
+                    </span>
+
+                    <span>
+                        Meesho
+                    </span>
+
+                    <span>
+                        Shopify
+                    </span>
+
+                    <span>
+                        D2C Brands
+                    </span>
+
+                    <span>
+                        Online Stores
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SERVICES
+        ===================================================== -->
+
+        <section
+            class="section"
+            id="services"
+        >
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    What We Improve
+                </div>
+
+                <h2>
+                    Every Detail,
+                    Carefully Refined.
+                </h2>
+
+                <p>
+                    Professional retouching focused on making your
+                    products look clean, attractive and trustworthy
+                    without losing their natural appearance.
+                </p>
+
+            </div>
+
+
+
+            <div class="service-grid">
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Professional Retouching
+                    </h3>
+
+                    <p>
+                        Refine product images by removing minor
+                        imperfections and improving the overall
+                        visual presentation.
+                    </p>
+
+                </div>
+
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        ◈
+                    </div>
+
+                    <h3>
+                        Color Correction
+                    </h3>
+
+                    <p>
+                        Balance colors, contrast and tones so your
+                        products appear accurate, attractive and
+                        consistent across your catalog.
+                    </p>
+
+                </div>
+
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        ☼
+                    </div>
+
+                    <h3>
+                        Lighting Enhancement
+                    </h3>
+
+                    <p>
+                        Improve exposure, highlights and shadows to
+                        create a refined studio-quality appearance.
+                    </p>
+
+                </div>
+
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        ⌁
+                    </div>
+
+                    <h3>
+                        Dust & Scratch Removal
+                    </h3>
+
+                    <p>
+                        Remove distracting dust, small scratches,
+                        spots and unwanted surface imperfections.
+                    </p>
+
+                </div>
+
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        ◐
+                    </div>
+
+                    <h3>
+                        Shadow Enhancement
+                    </h3>
+
+                    <p>
+                        Add or refine natural-looking shadows to give
+                        products better depth, dimension and realism.
+                    </p>
+
+                </div>
+
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        □
+                    </div>
+
+                    <h3>
+                        eCommerce Ready Images
+                    </h3>
+
+                    <p>
+                        Prepare polished visuals suitable for product
+                        listings, websites, catalogs and social media.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             BEFORE / AFTER
+        ===================================================== -->
+
+        <section class="comparison-section">
+
+            <div class="section">
+
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        The Transformation
+                    </div>
+
+                    <h2>
+                        Before → After
+                    </h2>
+
+                    <p>
+                        See how professional image editing can transform
+                        the visual quality and presentation of a product.
+                    </p>
+
+                </div>
+
+
+
+                <div class="comparison-grid">
+
+
+                    <!-- BEFORE -->
+
+                    <div class="comparison-card">
+
+                        <div class="comparison-image">
+
+                            <img
+                                src="assets/images/before.jpg"
+                                alt="Before professional product photo retouching"
+                            >
+
+                        </div>
+
+
+                        <div class="comparison-label">
+
+                            <strong>
+                                Before
+                            </strong>
+
+                            <span>
+                                Original Image
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- AFTER -->
+
+                    <div class="comparison-card">
+
+                        <div class="comparison-image">
+
+                            <img
+                                src="assets/images/after.png"
+                                alt="After professional product photo retouching"
+                            >
+
+                        </div>
+
+
+                        <div class="comparison-label">
+
+                            <strong>
+                                After
+                            </strong>
+
+                            <span>
+                                Retouched Image
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="image-note">
+
+                    Professional editing should enhance the product —
+                    not hide what makes it real.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PROCESS
+        ===================================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    Simple Workflow
+                </div>
+
+                <h2>
+                    From Raw Photo
+                    to Premium Visual.
+                </h2>
+
+                <p>
+                    A straightforward editing process designed around
+                    quality, consistency and fast delivery.
+                </p>
+
+            </div>
+
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        01 / SEND
+                    </div>
+
+                    <h3>
+                        Send Your Photos
+                    </h3>
+
+                    <p>
+                        Share your original product images along with
+                        your preferred requirements.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        02 / EDIT
+                    </div>
+
+                    <h3>
+                        Professional Retouching
+                    </h3>
+
+                    <p>
+                        We carefully refine colors, lighting, details,
+                        imperfections and overall presentation.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        03 / REVIEW
+                    </div>
+
+                    <h3>
+                        Quality Check
+                    </h3>
+
+                    <p>
+                        Every image is reviewed to maintain a clean,
+                        polished and consistent result.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        04 / DELIVER
+                    </div>
+
+                    <h3>
+                        Ready to Publish
+                    </h3>
+
+                    <p>
+                        Receive your finished images ready for your
+                        website, marketplace or marketing campaign.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             WHY DESIGNHAVEN
+        ===================================================== -->
+
+        <section class="why-section">
+
+            <div class="section">
+
+
+                <div class="why-grid">
+
+
+                    <div class="why-content">
+
+                        <div class="section-label">
+                            Why DesignHaven
+                        </div>
+
+                        <h2>
+                            Premium Editing.
+                            Natural Results.
+                        </h2>
+
+                        <p>
+                            Great product photography is not only about
+                            making an image look beautiful. It is about
+                            making the product feel trustworthy and
+                            desirable to the customer.
+                        </p>
+
+
+                        <div class="benefits">
+
+
+                            <div class="benefit">
+
+                                <strong>
+                                    Clean Details
+                                </strong>
+
+                                <span>
+                                    Remove visual distractions
+                                </span>
+
+                            </div>
+
+
+                            <div class="benefit">
+
+                                <strong>
+                                    Accurate Colors
+                                </strong>
+
+                                <span>
+                                    Natural product appearance
+                                </span>
+
+                            </div>
+
+
+                            <div class="benefit">
+
+                                <strong>
+                                    Premium Lighting
+                                </strong>
+
+                                <span>
+                                    Better depth and clarity
+                                </span>
+
+                            </div>
+
+
+                            <div class="benefit">
+
+                                <strong>
+                                    Consistent Results
+                                </strong>
+
+                                <span>
+                                    Professional catalog quality
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="why-visual">
+
+                        <div class="visual-card">
+
+                            <div class="visual-card-top">
+
+                                <div class="visual-card-logo">
+                                    Design<span>Haven</span>
+                                </div>
+
+                                <div class="visual-status">
+                                    Premium
+                                </div>
+
+                            </div>
+
+
+                            <div class="visual-lines">
+
+                                <div class="visual-line long"></div>
+
+                                <div class="visual-line medium"></div>
+
+                                <div class="visual-line short"></div>
+
+                                <div class="visual-line long"></div>
+
+                                <div class="visual-line medium"></div>
+
+                                <div class="visual-line short"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CTA
+        ===================================================== -->
+
+        <section class="cta-wrapper">
+
+            <div class="cta-box">
+
+                <h2>
+                    Ready to Make Your
+                    Products Look Better?
+                </h2>
+
+                <p>
+                    Give your product images the polished visual quality
+                    they deserve. Start your next editing project with
+                    DesignHaven.
+                </p>
+
+                <a
+                    href="index.html#contact"
+                    class="cta-button"
+                >
+                    Get Started With DesignHaven →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+
+            <div class="footer-brand">
+
+                <img
+                  src="assets/images/logo.png"
+                  alt="DesignHaven Logo"
+                 class="footer-logo-img"
+                >
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 DesignHaven. All rights reserved.
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
