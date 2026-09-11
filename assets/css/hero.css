@@ -136,7 +136,7 @@
 
     font-weight:800;
 
-    color:#38BDF8;
+    color:#f1f3f4fb;
 
     margin-bottom:8px;
 
@@ -348,7 +348,7 @@ width:100%;
     top:-200px;
 
     background:radial-gradient(circle,
-    rgba(124,58,237,.15),
+    rgba(246, 245, 248, 0.989),
     transparent 70%);
 
     filter:blur(0px);
@@ -368,7 +368,7 @@ width:100%;
     bottom:-250px;
 
     background:radial-gradient(circle,
-    rgb(124,58,237,.15),
+    rgba(244, 242, 245, 0.975),
     transparent 70%);
 
     filter:blur(80px);
@@ -511,7 +511,7 @@ width:100%;
 
     box-shadow:
 
-    0 15px 35px rgba(56,189,248,.35);
+    0 15px 35px rgba(242, 243, 244, 0.35);
 
 }
 
@@ -537,7 +537,7 @@ width:100%;
 
     border:1px solid rgba(255,255,255,.10);
 
-    background:rgba(255,255,255,.05);
+    background:rgba(244, 240, 240, 0.05);
 
     backdrop-filter:blur(14px);
 
@@ -555,7 +555,7 @@ width:100%;
 
     border-color:var(--primary);
 
-    background:rgba(56,189,248,.12);
+    background:rgba(236, 238, 239, 0.968);
 
 }
 
@@ -596,13 +596,13 @@ width:100%;
     background:
         radial-gradient(
             circle at 70% 45%,
-            rgba(56, 189, 248, .10),
+            rgba(236, 239, 240, 0.993),
             transparent 35%
         ),
         linear-gradient(
             90deg,
-            rgba(5, 8, 22, .96),
-            rgba(5, 8, 22, .72)
+            rgba(237, 237, 240, 0.96),
+            rgba(241, 241, 243, 0.925)
         );
 
     z-index: -1;
@@ -634,7 +634,7 @@ width:100%;
 
     border-radius: 22px;
 
-    background: rgba(255, 255, 255, 0.055);
+    background: rgba(243, 241, 241, 0.055);
 
     border: 1px solid rgba(255, 255, 255, 0.12);
 
