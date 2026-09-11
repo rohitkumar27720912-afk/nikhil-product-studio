@@ -97,6 +97,922 @@
   <link rel="stylesheet" href="assets/css/cta.css">
   <link rel="stylesheet" href="assets/css/contact.css">
   <link rel="stylesheet" href="assets/css/footer.css">
+
+  <style>
+
+/* =========================================================
+   DESIGNHAVEN — WHITE + BEIGE PREMIUM THEME
+   ========================================================= */
+
+:root {
+    --bg-main: #faf8f4;
+    --bg-white: #ffffff;
+    --bg-beige: #efe5d8;
+    --bg-light: #f6f0e8;
+
+    --text-dark: #76973f;
+    --text-medium: #625548;
+    --text-light: #81756a;
+
+    --accent: #a9825b;
+    --accent-light: #c5a27d;
+
+    --border: #e4d8ca;
+
+    --shadow-soft:
+        0 18px 50px rgba(68, 49, 31, 0.08);
+
+    --shadow-medium:
+        0 25px 70px rgba(68, 49, 31, 0.12);
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-main) !important;
+    color: var(--text-dark) !important;
+}
+
+section {
+    background: var(--bg-main);
+}
+
+.container {
+    position: relative;
+}
+
+
+/* =========================================================
+   HEADER / NAVBAR
+   ========================================================= */
+
+.header {
+    background: rgba(250, 248, 244, 0.90) !important;
+    border-bottom: 1px solid var(--border) !important;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.navbar {
+    background: transparent !important;
+}
+
+.logo {
+    color: var(--text-dark) !important;
+}
+
+.logo span {
+    color: var(--text-dark) !important;
+}
+
+.logo img {
+    width: 48px !important;
+    height: 48px !important;
+    object-fit: contain !important;
+}
+
+.nav-links a {
+    color: var(--text-medium) !important;
+}
+
+.nav-links a:hover {
+    color: var(--accent) !important;
+}
+
+.nav-btn {
+    background: var(--text-dark) !important;
+    color: #ffffff !important;
+
+    border: 1px solid var(--text-dark) !important;
+}
+
+.nav-btn:hover {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.menu-toggle {
+    color: var(--text-dark) !important;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(210, 187, 159, 0.20),
+            transparent 32%
+        ),
+        var(--bg-main) !important;
+}
+
+.hero-glow {
+    background:
+        radial-gradient(
+            circle,
+            rgba(194, 159, 120, 0.20),
+            transparent 65%
+        ) !important;
+
+    opacity: 0.8 !important;
+}
+
+.hero-tag {
+    background: var(--bg-light) !important;
+    color: var(--accent) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.hero h1 {
+    color: var(--text-dark) !important;
+}
+
+.hero h1 span {
+    color: var(--accent) !important;
+}
+
+.hero-content p {
+    color: var(--text-medium) !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-primary {
+    background: var(--text-dark) !important;
+    color: #ffffff !important;
+
+    border: 1px solid var(--text-dark) !important;
+}
+
+.btn-primary:hover {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.btn-secondary {
+    background: #ffffff !important;
+    color: var(--text-dark) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--bg-beige) !important;
+    border-color: var(--accent-light) !important;
+    color: var(--text-dark) !important;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+.hero-image {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: var(--shadow-medium) !important;
+}
+
+.hero-image img {
+    border-radius: inherit;
+}
+
+.hero-statement {
+    background: rgba(255,255,255,0.94) !important;
+
+    border: 1px solid var(--border) !important;
+
+    color: var(--text-medium) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.hero-statement p {
+    color: var(--text-medium) !important;
+}
+
+.statement-line {
+    background: var(--accent) !important;
+}
+
+
+/* =========================================================
+   HERO STATS
+   ========================================================= */
+
+.stat {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.stat h3 {
+    color: var(--text-dark) !important;
+}
+
+.stat span {
+    color: var(--text-light) !important;
+}
+
+
+/* =========================================================
+   TRUSTED BRANDS
+   ========================================================= */
+
+.trusted {
+    background: var(--bg-white) !important;
+
+    border-top: 1px solid var(--border) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+.trusted-title {
+    color: var(--text-medium) !important;
+}
+
+.logo-box {
+    background: var(--bg-light) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.logo-box:hover {
+    background: #ffffff !important;
+
+    border-color: var(--accent-light) !important;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title span {
+    color: var(--accent) !important;
+}
+
+.section-title h2 {
+    color: var(--text-dark) !important;
+}
+
+.section-title p {
+    color: var(--text-medium) !important;
+}
+
+
+/* =========================================================
+   BEFORE / AFTER COMPARISON
+   ========================================================= */
+
+.comparison {
+    background:
+        linear-gradient(
+            180deg,
+            #f3ebe2 0%,
+            #faf8f4 100%
+        ) !important;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.compare-wrapper {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: var(--shadow-medium) !important;
+}
+
+.compare-container {
+    border-radius: inherit;
+}
+
+.compare-image {
+    background: #eee5da !important;
+}
+
+.compare-overlay {
+    border-right-color: #ffffff !important;
+}
+
+.label,
+.before-tag,
+.after-tag {
+    background: rgba(47, 41, 35, 0.88) !important;
+    color: #ffffff !important;
+}
+
+.slider-button {
+    background: #ffffff !important;
+
+    color: var(--text-dark) !important;
+
+    border: 2px solid var(--text-dark) !important;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.slider-line {
+    background: #ffffff !important;
+}
+
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.services {
+    background: var(--bg-main) !important;
+}
+
+.service-card {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: none !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease !important;
+}
+
+.service-card:hover {
+    background: #fffdfa !important;
+
+    border-color: var(--accent-light) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+
+    transform: translateY(-7px);
+}
+
+.service-icon {
+    background: var(--bg-light) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.service-card h3 {
+    color: var(--text-dark) !important;
+}
+
+.service-card p {
+    color: var(--text-medium) !important;
+}
+
+
+/* =========================================================
+   WHY US
+   ========================================================= */
+
+.why-us {
+    background: var(--bg-beige) !important;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.why-card {
+    background: rgba(255,255,255,0.88) !important;
+
+    border: 1px solid rgba(220,205,188,0.9) !important;
+
+    box-shadow: none !important;
+}
+
+.why-card:hover {
+    background: #ffffff !important;
+
+    border-color: var(--accent-light) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+
+    transform: translateY(-6px);
+}
+
+.why-icon {
+    background: var(--bg-light) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.why-card h3 {
+    color: var(--text-dark) !important;
+}
+
+.why-card p {
+    color: var(--text-medium) !important;
+}
+
+
+/* =========================================================
+   PORTFOLIO
+   ========================================================= */
+
+.portfolio {
+    background: var(--bg-main) !important;
+}
+
+.portfolio-card {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.portfolio-card:hover {
+    border-color: var(--accent-light) !important;
+}
+
+.portfolio-filter {
+    background: var(--bg-light) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.filter-btn {
+    color: var(--text-medium) !important;
+
+    background: transparent !important;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--text-dark) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.testimonials {
+    background: var(--bg-beige) !important;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.testimonial-card {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: none !important;
+}
+
+.testimonial-card:hover {
+    box-shadow: var(--shadow-soft) !important;
+
+    transform: translateY(-5px);
+}
+
+.stars {
+    color: var(--accent) !important;
+}
+
+.testimonial-card p {
+    color: var(--text-medium) !important;
+}
+
+.client h4 {
+    color: var(--text-dark) !important;
+}
+
+.client span {
+    color: var(--text-light) !important;
+}
+
+.avatar {
+    background: var(--bg-beige) !important;
+
+    color: var(--text-dark) !important;
+
+    border: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+
+.pricing {
+    background: var(--bg-main) !important;
+}
+
+.pricing-calculator {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: var(--shadow-medium) !important;
+}
+
+.calculator-header span {
+    color: var(--accent) !important;
+}
+
+.calculator-header h3 {
+    color: var(--text-dark) !important;
+}
+
+.calculator-header p {
+    color: var(--text-medium) !important;
+}
+
+.quantity-btn {
+    background: var(--bg-light) !important;
+
+    border: 1px solid var(--border) !important;
+
+    color: var(--text-dark) !important;
+}
+
+.quantity-btn:hover,
+.quantity-btn.active {
+    background: var(--text-dark) !important;
+
+    border-color: var(--text-dark) !important;
+
+    color: #ffffff !important;
+}
+
+.calculator-result {
+    background: var(--bg-beige) !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.calculator-result span {
+    color: var(--text-light) !important;
+}
+
+.calculator-result strong {
+    color: var(--text-dark) !important;
+}
+
+.price-card {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: none !important;
+}
+
+.price-card:hover {
+    border-color: var(--accent-light) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.price-card.featured {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f5ede4
+        ) !important;
+
+    border-color: var(--accent-light) !important;
+}
+
+.price-card h3 {
+    color: var(--text-dark) !important;
+}
+
+.price {
+    color: var(--text-dark) !important;
+}
+
+.price-card li {
+    color: var(--text-medium) !important;
+}
+
+.popular {
+    background: var(--text-dark) !important;
+    color: #ffffff !important;
+}
+
+.price-btn {
+    background: var(--text-dark) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid var(--text-dark) !important;
+}
+
+.price-btn:hover {
+    background: var(--accent) !important;
+
+    border-color: var(--accent) !important;
+}
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.faq {
+    background: var(--bg-beige) !important;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-item {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+}
+
+.faq-question {
+    color: var(--text-dark) !important;
+
+    background: transparent !important;
+}
+
+.faq-question span {
+    color: var(--accent) !important;
+}
+
+.faq-answer {
+    color: var(--text-medium) !important;
+}
+
+.faq-answer p {
+    color: var(--text-medium) !important;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta {
+    background: var(--bg-main) !important;
+}
+
+.cta-box {
+    background:
+        linear-gradient(
+            135deg,
+            #302921 0%,
+            #514438 100%
+        ) !important;
+
+    border: 1px solid #443a31 !important;
+
+    box-shadow: var(--shadow-medium) !important;
+}
+
+.cta-tag {
+    background: rgba(255,255,255,0.10) !important;
+
+    border: 1px solid rgba(255,255,255,0.16) !important;
+
+    color: #e7d7c5 !important;
+}
+
+.cta-box h2 {
+    color: #ffffff !important;
+}
+
+.cta-box p {
+    color: #d8cec3 !important;
+}
+
+.cta-box .btn-primary {
+    background: #f1e4d5 !important;
+
+    color: #302921 !important;
+
+    border-color: #f1e4d5 !important;
+}
+
+.cta-box .btn-primary:hover {
+    background: #ffffff !important;
+}
+
+.cta-box .btn-secondary {
+    background: transparent !important;
+
+    color: #ffffff !important;
+
+    border-color: rgba(255,255,255,0.35) !important;
+}
+
+.cta-box .btn-secondary:hover {
+    background: rgba(255,255,255,0.10) !important;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact {
+    background: var(--bg-main) !important;
+}
+
+.info-card {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: none !important;
+}
+
+.info-card:hover {
+    border-color: var(--accent-light) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.info-card i {
+    color: var(--accent) !important;
+}
+
+.info-card p {
+    color: var(--text-medium) !important;
+}
+
+.contact-form {
+    background: #ffffff !important;
+
+    border: 1px solid var(--border) !important;
+
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: var(--bg-light) !important;
+
+    border: 1px solid var(--border) !important;
+
+    color: var(--text-dark) !important;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: #ffffff !important;
+
+    border-color: var(--accent) !important;
+
+    outline: none !important;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #9a8d80 !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    background: #302921 !important;
+
+    border-top: 1px solid #443a31 !important;
+}
+
+.footer-about h2,
+.footer h3 {
+    color: #ffffff !important;
+}
+
+.footer-about h2 span {
+    color: #e4cdb4 !important;
+}
+
+.footer-about p {
+    color: #cfc3b8 !important;
+}
+
+.footer a,
+.footer li {
+    color: #cfc3b8 !important;
+}
+
+.footer a:hover {
+    color: #ffffff !important;
+}
+
+.footer-bottom {
+    color: #a99c90 !important;
+
+    border-top-color: #4b4036 !important;
+}
+
+
+/* =========================================================
+   FLOATING WHATSAPP
+   ========================================================= */
+
+.whatsapp-float {
+    background: #302921 !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 15px 35px rgba(48,41,33,0.20) !important;
+}
+
+.whatsapp-float:hover {
+    background: var(--accent) !important;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+
+.lightbox {
+    background: rgba(38,32,27,0.94) !important;
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
+
+.progress-bar {
+    background: var(--accent) !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .header {
+        background: rgba(250,248,244,0.96) !important;
+    }
+
+    .nav-links {
+        background: #ffffff !important;
+
+        border: 1px solid var(--border) !important;
+
+        box-shadow: var(--shadow-medium) !important;
+    }
+
+    .nav-links a {
+        color: var(--text-dark) !important;
+    }
+
+    .hero {
+        background: var(--bg-main) !important;
+    }
+
+    .hero-image {
+        box-shadow: var(--shadow-soft) !important;
+    }
+
+    .service-card,
+    .why-card,
+    .portfolio-card,
+    .testimonial-card,
+    .price-card,
+    .faq-item,
+    .info-card {
+        box-shadow: none !important;
+    }
+
+}
+
+ </style>
   
   <!-- Utilities -->
   <link rel="stylesheet" href="assets/css/loader.css">
