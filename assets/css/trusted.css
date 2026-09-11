@@ -30,7 +30,7 @@
 
     background:radial-gradient(
         circle,
-        rgba(56,189,248,.12),
+        rgba(245, 247, 248, 0.989),
         transparent 70%
     );
 
@@ -56,7 +56,7 @@
 
     background:radial-gradient(
         circle,
-        rgba(124,58,237,.12),
+        rgba(239, 238, 241, 0.979),
         transparent 70%
     );
 
@@ -108,7 +108,7 @@
 
     background:linear-gradient(
         to right,
-        #050816,
+        #f0f1f3,
         transparent
     );
 
@@ -132,7 +132,7 @@
 
     background:linear-gradient(
         to left,
-        #050816,
+        #f2f2f4,
         transparent
     );
 
@@ -172,9 +172,9 @@
 
     border-radius:20px;
 
-    background:rgba(255,255,255,.05);
+    background:rgba(242, 239, 239, 0.05);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(245, 242, 242, 0.08);
 
     backdrop-filter:blur(18px);
 
@@ -200,10 +200,10 @@
 
     border-color:#38BDF8;
 
-    background:rgba(56,189,248,.10);
+    background:rgba(236, 238, 239, 0.1);
 
     box-shadow:
-        0 20px 45px rgba(56,189,248,.22);
+        0 20px 45px rgba(242, 243, 244, 0.22);
 
 }
 
