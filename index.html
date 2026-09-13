@@ -1013,6 +1013,240 @@ section {
 }
 
  </style>
+
+ <style>
+
+/* ================= FREE TOOLS ================= */
+
+.free-tools-section {
+    padding: 110px 6%;
+    background: #f6f0e8;
+    color: #2f2923;
+    position: relative;
+    overflow: hidden;
+}
+
+.free-tools-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.free-tools-heading {
+    max-width: 700px;
+    margin-bottom: 55px;
+}
+
+.free-tools-label {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #a9825b;
+}
+
+.free-tools-heading h2 {
+    margin: 0;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    font-weight: 800;
+}
+
+.free-tools-heading h2 span {
+    color: #a9825b;
+}
+
+.free-tools-heading p {
+    margin-top: 22px;
+    max-width: 620px;
+    color: #625548;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* GRID */
+
+.free-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+
+/* CARD */
+
+.free-tool-card {
+    position: relative;
+    display: block;
+    padding: 34px;
+    min-height: 320px;
+    text-decoration: none;
+    color: #2f2923;
+
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid #e4d8ca;
+    border-radius: 24px;
+
+    box-shadow: 0 15px 45px rgba(83, 63, 43, 0.08);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.free-tool-card:hover {
+    transform: translateY(-8px);
+    border-color: #c5a27d;
+    box-shadow: 0 25px 60px rgba(83, 63, 43, 0.15);
+}
+
+
+/* ICON */
+
+.free-tool-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #efe5d8;
+    color: #a9825b;
+
+    font-size: 22px;
+
+    margin-bottom: 28px;
+}
+
+
+/* CONTENT */
+
+.tool-tag {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
+    color: #a9825b;
+}
+
+.free-tool-content h3 {
+    margin: 0 0 12px;
+
+    font-size: 25px;
+    font-weight: 750;
+}
+
+.free-tool-content p {
+    margin: 0;
+
+    color: #625548;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* LINK */
+
+.tool-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 28px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #2f2923;
+
+    transition: gap 0.25s ease;
+}
+
+.free-tool-card:hover .tool-link {
+    gap: 14px;
+}
+
+
+/* BOTTOM */
+
+.free-tools-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 45px;
+    padding-top: 28px;
+
+    border-top: 1px solid #e4d8ca;
+}
+
+.free-tools-bottom p {
+    margin: 0;
+    color: #81756a;
+    font-size: 14px;
+}
+
+.free-tools-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #2f2923;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.free-tools-cta:hover {
+    color: #a9825b;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .free-tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .free-tool-card {
+        min-height: auto;
+    }
+
+    .free-tools-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .free-tools-section {
+        padding: 80px 5%;
+    }
+
+    .free-tool-card {
+        padding: 27px;
+    }
+
+    .free-tools-heading h2 {
+        letter-spacing: -1px;
+    }
+}
+
+</style>
   
   <!-- Utilities -->
   <link rel="stylesheet" href="assets/css/loader.css">
@@ -1299,6 +1533,121 @@ section {
     </div>
 
 </section>
+
+<!-- ================= FREE TOOLS SECTION ================= -->
+<section class="free-tools-section" id="free-tools">
+
+    <div class="free-tools-container">
+
+        <div class="free-tools-heading">
+            <span class="free-tools-label">DESIGNHAVEN TOOLS</span>
+
+            <h2>
+                Powerful Tools.<br>
+                <span>Completely Free.</span>
+            </h2>
+
+            <p>
+                Quickly prepare your product images for e-commerce,
+                social media and online stores with our free tools.
+            </p>
+        </div>
+
+
+        <div class="free-tools-grid">
+
+            <!-- Image Resizer -->
+            <a href="image-resizer.html" class="free-tool-card">
+
+                <div class="free-tool-icon">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+
+                <div class="free-tool-content">
+                    <span class="tool-tag">FREE TOOL</span>
+
+                    <h3>Image Resizer</h3>
+
+                    <p>
+                        Resize product images for Amazon, Flipkart,
+                        Meesho, Shopify and social media.
+                    </p>
+
+                    <span class="tool-link">
+                        Resize Image <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- Image Compressor -->
+            <a href="image-compressor.html" class="free-tool-card">
+
+                <div class="free-tool-icon">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                </div>
+
+                <div class="free-tool-content">
+                    <span class="tool-tag">FREE TOOL</span>
+
+                    <h3>Image Compressor</h3>
+
+                    <p>
+                        Reduce image file size while keeping your
+                        product photos sharp and professional.
+                    </p>
+
+                    <span class="tool-link">
+                        Compress Image <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+            </a>
+
+
+            <!-- Background Remover -->
+            <a href="background-removal.html" class="free-tool-card">
+
+                <div class="free-tool-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+
+                <div class="free-tool-content">
+                    <span class="tool-tag">FREE TOOL</span>
+
+                    <h3>Background Remover</h3>
+
+                    <p>
+                        Remove unwanted backgrounds and create
+                        clean product images for online stores.
+                    </p>
+
+                    <span class="tool-link">
+                        Remove Background <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="free-tools-bottom">
+            <p>
+                No complicated software. No design experience required.
+            </p>
+
+            <a href="#contact" class="free-tools-cta">
+                Need Professional Editing?
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= END FREE TOOLS SECTION ================= -->
 
 <!-- ==========================
      SERVICES
