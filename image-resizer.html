@@ -1,0 +1,3559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Image Resizer - Resize Images Online | DesignHaven</title>
+
+    <meta
+        name="description"
+        content="Free online image resizer by DesignHaven. Resize product images for Amazon, Flipkart, Meesho, Shopify and social media directly in your browser."
+    >
+
+    <link rel="icon" href="assets/images/logo.png">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           DESIGNHAVEN IMAGE RESIZER
+           PREMIUM WHITE + BEIGE THEME
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #faf8f4;
+            --white: #ffffff;
+            --beige: #f1e7da;
+            --beige-light: #f7f1e9;
+
+            --text: #2f2923;
+            --text-soft: #6f6256;
+            --text-light: #8b7e72;
+
+            --accent: #a9825b;
+            --accent-dark: #8d6b49;
+
+            --border: #e5d9cc;
+
+            --shadow:
+                0 20px 60px rgba(71, 55, 39, 0.08);
+
+            --radius: 24px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            flex-shrink: 0;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--text-soft);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.25s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--accent-dark);
+            transform: translateX(-3px);
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+
+            padding:
+                80px
+                20px
+                55px;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            background: rgba(201, 169, 132, 0.14);
+
+            border-radius: 50%;
+
+            filter: blur(80px);
+
+            top: -160px;
+            left: -120px;
+
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 360px;
+            height: 360px;
+
+            background: rgba(239, 226, 210, 0.55);
+
+            border-radius: 50%;
+
+            filter: blur(80px);
+
+            right: -100px;
+            top: 30px;
+
+            pointer-events: none;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+
+            width: min(900px, 100%);
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            background: var(--beige-light);
+
+            border: 1px solid var(--border);
+
+            border-radius: 100px;
+
+            color: var(--accent-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2.8px;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: var(--text-soft);
+
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           TOOL WRAPPER
+        ===================================================== */
+
+        .tool-section {
+            padding:
+                10px
+                20px
+                80px;
+        }
+
+        .tool-container {
+            width: min(1180px, 100%);
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.1fr)
+                minmax(350px, 0.9fr);
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
+        .card {
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+        }
+
+        /* =====================================================
+           UPLOAD / PREVIEW CARD
+        ===================================================== */
+
+        .preview-card {
+            padding: 26px;
+
+            min-height: 650px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 22px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            color: var(--text-light);
+
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .privacy-badge {
+            flex-shrink: 0;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 11px;
+
+            background: #f5f1eb;
+
+            border: 1px solid var(--border);
+
+            border-radius: 100px;
+
+            color: #6c6259;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           UPLOAD AREA
+        ===================================================== */
+
+        .upload-area {
+            flex: 1;
+
+            min-height: 500px;
+
+            border: 1.5px dashed #d5c6b6;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fcfaf7,
+                    #f7f0e8
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px;
+
+            cursor: pointer;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffdfb,
+                    #f5ece1
+                );
+        }
+
+        .upload-area.dragover {
+            border-color: var(--accent-dark);
+
+            background: #f2e7da;
+
+            transform: scale(0.995);
+        }
+
+        .upload-content {
+            max-width: 430px;
+        }
+
+        .upload-icon {
+            width: 82px;
+            height: 82px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            color: var(--accent);
+
+            font-size: 30px;
+
+            box-shadow:
+                0 12px 35px rgba(79, 58, 37, 0.08);
+        }
+
+        .upload-content h2 {
+            font-size: 23px;
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+        .upload-content p {
+            color: var(--text-light);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 22px;
+        }
+
+        .upload-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 13px 20px;
+
+            background: var(--text);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .upload-button:hover {
+            background: var(--accent-dark);
+
+            transform: translateY(-2px);
+        }
+
+        .upload-note {
+            display: block;
+
+            margin-top: 15px;
+
+            color: #9b9086;
+
+            font-size: 11px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        /* =====================================================
+           PREVIEW IMAGE
+        ===================================================== */
+
+        .image-preview-wrapper {
+            display: none;
+
+            flex: 1;
+
+            min-height: 500px;
+
+            flex-direction: column;
+        }
+
+        .image-preview-wrapper.active {
+            display: flex;
+        }
+
+        .preview-stage {
+            flex: 1;
+
+            min-height: 420px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            border-radius: 20px;
+
+            background:
+                repeating-conic-gradient(
+                    #f4eee7 0% 25%,
+                    #fff 0% 50%
+                )
+                50% / 22px 22px;
+
+            border: 1px solid var(--border);
+
+            overflow: hidden;
+        }
+
+        #previewImage {
+            max-width: 100%;
+            max-height: 420px;
+
+            display: block;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .image-info {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 14px;
+        }
+
+        .info-box {
+            padding: 13px 15px;
+
+            background: var(--beige-light);
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+        }
+
+        .info-label {
+            display: block;
+
+            color: var(--text-light);
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: var(--text);
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+        .change-image-button {
+            margin-top: 12px;
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid var(--border);
+
+            background: white;
+
+            color: var(--text-soft);
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .change-image-button:hover {
+            border-color: var(--accent);
+
+            color: var(--accent-dark);
+        }
+
+        /* =====================================================
+           SETTINGS CARD
+        ===================================================== */
+
+        .settings-card {
+            padding: 26px;
+
+            position: sticky;
+            top: 100px;
+        }
+
+        .settings-header {
+            margin-bottom: 25px;
+        }
+
+        .settings-header h2 {
+            font-size: 21px;
+            font-weight: 800;
+
+            margin-bottom: 6px;
+        }
+
+        .settings-header p {
+            color: var(--text-light);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        .setting-group {
+            margin-bottom: 23px;
+        }
+
+        .setting-label {
+            display: block;
+
+            color: var(--text);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+        /* =====================================================
+           PRESETS
+        ===================================================== */
+
+        .preset-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 9px;
+        }
+
+        .preset-button {
+            padding: 12px 10px;
+
+            border: 1px solid var(--border);
+
+            background: #fff;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition: 0.2s ease;
+        }
+
+        .preset-button:hover {
+            border-color: var(--accent-light);
+
+            background: var(--beige-light);
+        }
+
+        .preset-button.active {
+            border-color: var(--accent);
+
+            background: #f5ece2;
+
+            box-shadow:
+                0 0 0 2px rgba(169, 130, 91, 0.08);
+        }
+
+        .preset-name {
+            display: block;
+
+            color: var(--text);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 3px;
+        }
+
+        .preset-size {
+            display: block;
+
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        /* =====================================================
+           DIMENSIONS
+        ===================================================== */
+
+        .dimension-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+        }
+
+        .input-wrapper label {
+            display: block;
+
+            color: var(--text-light);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        .input-wrapper input,
+        .select-control {
+            width: 100%;
+
+            padding: 12px 13px;
+
+            border: 1px solid var(--border);
+
+            background: white;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            color: var(--text);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .input-wrapper input:focus,
+        .select-control:focus {
+            border-color: var(--accent);
+
+            box-shadow:
+                0 0 0 3px rgba(169, 130, 91, 0.08);
+        }
+
+        /* =====================================================
+           RESIZE MODE
+        ===================================================== */
+
+        .mode-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 9px;
+        }
+
+        .mode-option {
+            position: relative;
+        }
+
+        .mode-option input {
+            position: absolute;
+
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mode-label {
+            display: block;
+
+            padding: 12px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .mode-label strong {
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 3px;
+        }
+
+        .mode-label small {
+            display: block;
+
+            color: var(--text-light);
+
+            font-size: 10px;
+
+            line-height: 1.4;
+        }
+
+        .mode-option input:checked + .mode-label {
+            border-color: var(--accent);
+
+            background: #f5ece2;
+        }
+
+        /* =====================================================
+           CHECKBOX
+        ===================================================== */
+
+        .ratio-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 13px 14px;
+
+            background: var(--beige-light);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+        }
+
+        .ratio-text {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .ratio-icon {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            border-radius: 9px;
+
+            color: var(--accent-dark);
+
+            font-size: 12px;
+        }
+
+        .ratio-text strong {
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 2px;
+        }
+
+        .ratio-text small {
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        .switch {
+            position: relative;
+
+            width: 44px;
+            height: 24px;
+
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+
+            inset: 0;
+
+            background: #d9cec1;
+
+            border-radius: 100px;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .slider::before {
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            left: 3px;
+            top: 3px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            transition: 0.25s ease;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .switch input:checked + .slider {
+            background: var(--accent);
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(20px);
+        }
+
+        /* =====================================================
+           FORMAT
+        ===================================================== */
+
+        .format-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 8px;
+        }
+
+        .format-button {
+            padding: 11px 8px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            color: var(--text-soft);
+
+            cursor: pointer;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            transition: 0.2s ease;
+        }
+
+        .format-button:hover {
+            border-color: var(--accent-light);
+        }
+
+        .format-button.active {
+            background: var(--text);
+
+            border-color: var(--text);
+
+            color: white;
+        }
+
+        /* =====================================================
+           ACTION BUTTONS
+        ===================================================== */
+
+        .resize-button {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            background: var(--text);
+
+            color: white;
+
+            border-radius: 13px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            transition: 0.25s ease;
+
+            margin-top: 5px;
+        }
+
+        .resize-button:hover:not(:disabled) {
+            background: var(--accent-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(80, 61, 42, 0.15);
+        }
+
+        .resize-button:disabled {
+            opacity: 0.45;
+
+            cursor: not-allowed;
+        }
+
+        .download-button {
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 14px;
+
+            border: 1px solid var(--accent);
+
+            background: #f6ede3;
+
+            color: var(--accent-dark);
+
+            border-radius: 13px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            transition: 0.25s ease;
+        }
+
+        .download-button.show {
+            display: flex;
+        }
+
+        .download-button:hover {
+            background: var(--accent);
+
+            color: white;
+        }
+
+        .reset-button {
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 11px;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--text-light);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .reset-button:hover {
+            color: var(--accent-dark);
+        }
+
+        /* =====================================================
+           RESULT MESSAGE
+        ===================================================== */
+
+        .result-message {
+            display: none;
+
+            margin-top: 13px;
+
+            padding: 11px 13px;
+
+            background: #f6f1eb;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+        .result-message.show {
+            display: block;
+        }
+
+        /* =====================================================
+           INFO SECTION
+        ===================================================== */
+
+        .info-section {
+            padding:
+                0
+                20px
+                90px;
+        }
+
+        .info-container {
+            width: min(1180px, 100%);
+            margin: auto;
+        }
+
+        .info-heading {
+            text-align: center;
+
+            max-width: 650px;
+
+            margin: 0 auto 35px;
+        }
+
+        .info-heading span {
+            display: inline-block;
+
+            color: var(--accent);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+            margin-bottom: 10px;
+        }
+
+        .info-heading h2 {
+            font-size: clamp(28px, 4vw, 42px);
+
+            letter-spacing: -1.3px;
+
+            margin-bottom: 12px;
+        }
+
+        .info-heading p {
+            color: var(--text-soft);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        .platform-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 12px;
+        }
+
+        .platform-card {
+            padding: 20px 17px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 17px;
+
+            transition: 0.25s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 35px rgba(75, 55, 38, 0.08);
+        }
+
+        .platform-icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--beige-light);
+
+            border-radius: 11px;
+
+            color: var(--accent-dark);
+
+            margin-bottom: 13px;
+        }
+
+        .platform-card h3 {
+            font-size: 14px;
+
+            margin-bottom: 5px;
+        }
+
+        .platform-card p {
+            color: var(--text-light);
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            padding: 30px 20px;
+
+            background: #2f2923;
+
+            color: white;
+        }
+
+        .footer-container {
+            width: min(1180px, 100%);
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .footer-logo {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+        }
+
+        .footer-text {
+            color: #cfc5bb;
+
+            font-size: 12px;
+        }
+
+        .footer-back {
+            color: #ddd2c7;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .footer-back:hover {
+            color: white;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .tool-container {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-card {
+                position: static;
+            }
+
+            .platform-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav-container {
+                width: min(100% - 28px, 1180px);
+
+                min-height: 68px;
+            }
+
+            .brand-logo {
+                width: 43px;
+                height: 43px;
+            }
+
+            .hero {
+                padding:
+                    55px
+                    15px
+                    35px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+
+                letter-spacing: -1.8px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .tool-section {
+                padding:
+                    5px
+                    15px
+                    55px;
+            }
+
+            .preview-card,
+            .settings-card {
+                padding: 18px;
+
+                border-radius: 20px;
+            }
+
+            .preview-card {
+                min-height: auto;
+            }
+
+            .upload-area,
+            .image-preview-wrapper {
+                min-height: 390px;
+            }
+
+            .preview-stage {
+                min-height: 320px;
+
+                padding: 15px;
+            }
+
+            #previewImage {
+                max-height: 300px;
+            }
+
+            .card-header {
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            .privacy-badge {
+                align-self: flex-start;
+            }
+
+            .preset-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mode-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-section {
+                padding:
+                    0
+                    15px
+                    60px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .preset-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dimension-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .format-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .upload-icon {
+                width: 68px;
+                height: 68px;
+
+                font-size: 25px;
+            }
+
+            .upload-content h2 {
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+                <img
+                    src="assets/images/logo.png"
+                    alt="DesignHaven Logo"
+                    class="brand-logo"
+                >
+            </a>
+
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                Back to DesignHaven
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <span class="eyebrow">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                DESIGNHAVEN FREE TOOL
+            </span>
+
+            <h1>
+                Resize Images.<br>
+                <span>Perfectly.</span>
+            </h1>
+
+            <p class="hero-description">
+                Resize your product images for Amazon, Flipkart, Meesho,
+                Shopify and social media — quickly, professionally and
+                completely free.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN TOOL
+    ===================================================== -->
+
+    <section class="tool-section">
+
+        <div class="tool-container">
+
+
+            <!-- =================================================
+                 PREVIEW CARD
+            ================================================= -->
+
+            <div class="card preview-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2 class="card-title">
+                            Your Image
+                        </h2>
+
+                        <p class="card-subtitle">
+                            Upload an image to start resizing.
+                        </p>
+
+                    </div>
+
+                    <div class="privacy-badge">
+                        <i class="fas fa-lock"></i>
+                        Browser Processing
+                    </div>
+
+                </div>
+
+
+                <!-- Upload Area -->
+
+                <div
+                    class="upload-area"
+                    id="uploadArea"
+                >
+
+                    <div class="upload-content">
+
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-arrow-up"></i>
+                        </div>
+
+                        <h2>
+                            Drop your image here
+                        </h2>
+
+                        <p>
+                            Drag & drop your product image here,
+                            or select an image from your computer.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="upload-button"
+                            id="selectImageButton"
+                        >
+                            <i class="fas fa-folder-open"></i>
+                            Choose Image
+                        </button>
+
+                        <span class="upload-note">
+                            JPG, PNG or WebP • Processed locally in your browser
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Image Preview -->
+
+                <div
+                    class="image-preview-wrapper"
+                    id="imagePreviewWrapper"
+                >
+
+                    <div class="preview-stage">
+
+                        <img
+                            id="previewImage"
+                            src=""
+                            alt="Uploaded image preview"
+                        >
+
+                    </div>
+
+
+                    <div class="image-info">
+
+                        <div class="info-box">
+
+                            <span class="info-label">
+                                Original Size
+                            </span>
+
+                            <span
+                                class="info-value"
+                                id="originalDimensions"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                        <div class="info-box">
+
+                            <span class="info-label">
+                                Output Size
+                            </span>
+
+                            <span
+                                class="info-value"
+                                id="outputDimensions"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="change-image-button"
+                        id="changeImageButton"
+                    >
+                        <i class="fas fa-image"></i>
+                        Choose Another Image
+                    </button>
+
+                </div>
+
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 SETTINGS CARD
+            ================================================= -->
+
+            <div class="card settings-card">
+
+                <div class="settings-header">
+
+                    <h2>
+                        Resize Settings
+                    </h2>
+
+                    <p>
+                        Choose a platform preset or enter your
+                        own dimensions.
+                    </p>
+
+                </div>
+
+
+                <!-- PLATFORM PRESETS -->
+
+                <div class="setting-group">
+
+                    <label class="setting-label">
+                        Platform Presets
+                    </label>
+
+                    <div class="preset-grid">
+
+                        <button
+                            type="button"
+                            class="preset-button"
+                            data-width="2000"
+                            data-height="2000"
+                        >
+                            <span class="preset-name">
+                                Amazon
+                            </span>
+
+                            <span class="preset-size">
+                                2000 × 2000 px
+                            </span>
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="preset-button"
+                            data-width="2000"
+                            data-height="2000"
+                        >
+                            <span class="preset-name">
+                                Flipkart
+                            </span>
+
+                            <span class="preset-size">
+                                2000 × 2000 px
+                            </span>
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="preset-button"
+                            data-width="2000"
+                            data-height="2000"
+                        >
+                            <span class="preset-name">
+                                Meesho
+                            </span>
+
+                            <span class="preset-size">
+                                2000 × 2000 px
+                            </span>
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="preset-button"
+                            data-width="2048"
+                            data-height="2048"
+                        >
+                            <span class="preset-name">
+                                Shopify
+                            </span>
+
+                            <span class="preset-size">
+                                2048 × 2048 px
+                            </span>
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="preset-button"
+                            data-width="1080"
+                            data-height="1080"
+                        >
+                            <span class="preset-name">
+                                Instagram
+                            </span>
+
+                            <span class="preset-size">
+                                1080 × 1080 px
+                            </span>
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="preset-button"
+                            id="customPreset"
+                        >
+                            <span class="preset-name">
+                                Custom
+                            </span>
+
+                            <span class="preset-size">
+                                Your dimensions
+                            </span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DIMENSIONS -->
+
+                <div class="setting-group">
+
+                    <label class="setting-label">
+                        Dimensions
+                    </label>
+
+                    <div class="dimension-grid">
+
+                        <div class="input-wrapper">
+
+                            <label for="widthInput">
+                                Width (px)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="widthInput"
+                                min="1"
+                                max="10000"
+                                placeholder="Width"
+                            >
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <label for="heightInput">
+                                Height (px)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="heightInput"
+                                min="1"
+                                max="10000"
+                                placeholder="Height"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESIZE MODE -->
+
+                <div class="setting-group">
+
+                    <label class="setting-label">
+                        Resize Mode
+                    </label>
+
+                    <div class="mode-grid">
+
+                        <div class="mode-option">
+
+                            <input
+                                type="radio"
+                                name="resizeMode"
+                                id="modeFit"
+                                value="fit"
+                                checked
+                            >
+
+                            <label
+                                for="modeFit"
+                                class="mode-label"
+                            >
+
+                                <strong>
+                                    Fit
+                                </strong>
+
+                                <small>
+                                    Keep complete image
+                                </small>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="mode-option">
+
+                            <input
+                                type="radio"
+                                name="resizeMode"
+                                id="modeFill"
+                                value="fill"
+                            >
+
+                            <label
+                                for="modeFill"
+                                class="mode-label"
+                            >
+
+                                <strong>
+                                    Fill
+                                </strong>
+
+                                <small>
+                                    Fill target area
+                                </small>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="mode-option">
+
+                            <input
+                                type="radio"
+                                name="resizeMode"
+                                id="modeCrop"
+                                value="crop"
+                            >
+
+                            <label
+                                for="modeCrop"
+                                class="mode-label"
+                            >
+
+                                <strong>
+                                    Crop
+                                </strong>
+
+                                <small>
+                                    Center crop
+                                </small>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="mode-option">
+
+                            <input
+                                type="radio"
+                                name="resizeMode"
+                                id="modeStretch"
+                                value="stretch"
+                            >
+
+                            <label
+                                for="modeStretch"
+                                class="mode-label"
+                            >
+
+                                <strong>
+                                    Stretch
+                                </strong>
+
+                                <small>
+                                    Exact dimensions
+                                </small>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- KEEP RATIO -->
+
+                <div class="setting-group">
+
+                    <div class="ratio-row">
+
+                        <div class="ratio-text">
+
+                            <div class="ratio-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Keep Aspect Ratio
+                                </strong>
+
+                                <small>
+                                    Preserve original proportions
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="ratioCheckbox"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORMAT -->
+
+                <div class="setting-group">
+
+                    <label class="setting-label">
+                        Output Format
+                    </label>
+
+                    <div class="format-grid">
+
+                        <button
+                            type="button"
+                            class="format-button active"
+                            data-format="image/jpeg"
+                        >
+                            JPG
+                        </button>
+
+                        <button
+                            type="button"
+                            class="format-button"
+                            data-format="image/png"
+                        >
+                            PNG
+                        </button>
+
+                        <button
+                            type="button"
+                            class="format-button"
+                            data-format="image/webp"
+                        >
+                            WebP
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION -->
+
+                <button
+                    type="button"
+                    class="resize-button"
+                    id="resizeButton"
+                    disabled
+                >
+                    <i class="fas fa-expand"></i>
+                    Resize Image
+                </button>
+
+
+                <button
+                    type="button"
+                    class="download-button"
+                    id="downloadButton"
+                >
+                    <i class="fas fa-download"></i>
+                    Download Resized Image
+                </button>
+
+
+                <div
+                    class="result-message"
+                    id="resultMessage"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="reset-button"
+                    id="resetButton"
+                >
+                    <i class="fas fa-rotate-left"></i>
+                    Reset Tool
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PLATFORM INFORMATION
+    ===================================================== -->
+
+    <section class="info-section">
+
+        <div class="info-container">
+
+            <div class="info-heading">
+
+                <span>
+                    READY FOR E-COMMERCE
+                </span>
+
+                <h2>
+                    Resize for your platform
+                </h2>
+
+                <p>
+                    Quickly prepare your product images using
+                    common dimensions for popular online platforms.
+                </p>
+
+            </div>
+
+
+            <div class="platform-grid">
+
+                <div class="platform-card">
+
+                    <div class="platform-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+
+                    <h3>
+                        Amazon
+                    </h3>
+
+                    <p>
+                        2000 × 2000 px recommended working size.
+                    </p>
+
+                </div>
+
+
+                <div class="platform-card">
+
+                    <div class="platform-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+
+                    <h3>
+                        Flipkart
+                    </h3>
+
+                    <p>
+                        2000 × 2000 px product image preset.
+                    </p>
+
+                </div>
+
+
+                <div class="platform-card">
+
+                    <div class="platform-icon">
+                        <i class="fas fa-bag-shopping"></i>
+                    </div>
+
+                    <h3>
+                        Meesho
+                    </h3>
+
+                    <p>
+                        2000 × 2000 px square product preset.
+                    </p>
+
+                </div>
+
+
+                <div class="platform-card">
+
+                    <div class="platform-icon">
+                        <i class="fas fa-cart-shopping"></i>
+                    </div>
+
+                    <h3>
+                        Shopify
+                    </h3>
+
+                    <p>
+                        Up to 2048 × 2048 px product image preset.
+                    </p>
+
+                </div>
+
+
+                <div class="platform-card">
+
+                    <div class="platform-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+
+                    <h3>
+                        Instagram
+                    </h3>
+
+                    <p>
+                        1080 × 1080 px square social preset.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/logo.png"
+                    alt="DesignHaven Logo"
+                    class="footer-logo"
+                >
+
+                <span class="footer-text">
+                    © 2026 DesignHaven. Free Image Resizer.
+                </span>
+
+            </div>
+
+            <a
+                href="index.html"
+                class="footer-back"
+            >
+                Back to DesignHaven
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const fileInput =
+            document.getElementById("fileInput");
+
+        const uploadArea =
+            document.getElementById("uploadArea");
+
+        const selectImageButton =
+            document.getElementById("selectImageButton");
+
+        const changeImageButton =
+            document.getElementById("changeImageButton");
+
+        const imagePreviewWrapper =
+            document.getElementById("imagePreviewWrapper");
+
+        const previewImage =
+            document.getElementById("previewImage");
+
+        const originalDimensions =
+            document.getElementById("originalDimensions");
+
+        const outputDimensions =
+            document.getElementById("outputDimensions");
+
+        const widthInput =
+            document.getElementById("widthInput");
+
+        const heightInput =
+            document.getElementById("heightInput");
+
+        const ratioCheckbox =
+            document.getElementById("ratioCheckbox");
+
+        const resizeButton =
+            document.getElementById("resizeButton");
+
+        const downloadButton =
+            document.getElementById("downloadButton");
+
+        const resetButton =
+            document.getElementById("resetButton");
+
+        const resultMessage =
+            document.getElementById("resultMessage");
+
+
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        let originalImage = null;
+
+        let originalWidth = 0;
+
+        let originalHeight = 0;
+
+        let aspectRatio = 1;
+
+        let selectedFormat = "image/jpeg";
+
+        let resizedBlob = null;
+
+        let objectUrl = null;
+
+
+        /* =====================================================
+           SELECT IMAGE
+        ===================================================== */
+
+        selectImageButton.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+                fileInput.click();
+
+            }
+        );
+
+
+        uploadArea.addEventListener(
+            "click",
+            function() {
+
+                if (!originalImage) {
+                    fileInput.click();
+                }
+
+            }
+        );
+
+
+        changeImageButton.addEventListener(
+            "click",
+            function() {
+
+                fileInput.click();
+
+            }
+        );
+
+
+        fileInput.addEventListener(
+            "change",
+            function() {
+
+                if (this.files && this.files[0]) {
+
+                    handleFile(this.files[0]);
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           DRAG & DROP
+        ===================================================== */
+
+        [
+            "dragenter",
+            "dragover"
+        ].forEach(function(eventName) {
+
+            uploadArea.addEventListener(
+                eventName,
+                function(event) {
+
+                    event.preventDefault();
+
+                    uploadArea.classList.add("dragover");
+
+                }
+            );
+
+        });
+
+
+        [
+            "dragleave",
+            "drop"
+        ].forEach(function(eventName) {
+
+            uploadArea.addEventListener(
+                eventName,
+                function(event) {
+
+                    event.preventDefault();
+
+                    uploadArea.classList.remove("dragover");
+
+                }
+            );
+
+        });
+
+
+        uploadArea.addEventListener(
+            "drop",
+            function(event) {
+
+                const files =
+                    event.dataTransfer.files;
+
+                if (
+                    files &&
+                    files.length > 0
+                ) {
+
+                    handleFile(files[0]);
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           HANDLE FILE
+        ===================================================== */
+
+        function handleFile(file) {
+
+            if (!file.type.startsWith("image/")) {
+
+                showMessage(
+                    "Please choose a valid image file."
+                );
+
+                return;
+
+            }
+
+
+            if (objectUrl) {
+
+                URL.revokeObjectURL(objectUrl);
+
+            }
+
+
+            objectUrl =
+                URL.createObjectURL(file);
+
+
+            const img =
+                new Image();
+
+
+            img.onload =
+                function() {
+
+                    originalImage = img;
+
+                    originalWidth = img.naturalWidth;
+
+                    originalHeight = img.naturalHeight;
+
+                    aspectRatio =
+                        originalWidth /
+                        originalHeight;
+
+
+                    previewImage.src =
+                        objectUrl;
+
+
+                    originalDimensions.textContent =
+                        `${originalWidth} × ${originalHeight} px`;
+
+
+                    widthInput.value =
+                        originalWidth;
+
+                    heightInput.value =
+                        originalHeight;
+
+
+                    uploadArea.style.display =
+                        "none";
+
+                    imagePreviewWrapper.classList.add(
+                        "active"
+                    );
+
+
+                    resizeButton.disabled =
+                        false;
+
+
+                    downloadButton.classList.remove(
+                        "show"
+                    );
+
+
+                    resizedBlob = null;
+
+                    outputDimensions.textContent =
+                        "—";
+
+
+                    resultMessage.classList.remove(
+                        "show"
+                    );
+
+                };
+
+
+            img.onerror =
+                function() {
+
+                    showMessage(
+                        "Unable to load this image. Please try another file."
+                    );
+
+                };
+
+
+            img.src =
+                objectUrl;
+
+        }
+
+
+        /* =====================================================
+           PRESET BUTTONS
+        ===================================================== */
+
+        const presetButtons =
+            document.querySelectorAll(
+                ".preset-button"
+            );
+
+
+        presetButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        presetButtons.forEach(
+                            function(btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        if (
+                            this.id ===
+                            "customPreset"
+                        ) {
+
+                            widthInput.focus();
+
+                            return;
+
+                        }
+
+
+                        const targetWidth =
+                            parseInt(
+                                this.dataset.width
+                            );
+
+                        const targetHeight =
+                            parseInt(
+                                this.dataset.height
+                            );
+
+
+                        widthInput.value =
+                            targetWidth;
+
+                        heightInput.value =
+                            targetHeight;
+
+
+                        updateOutputPreview();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           DIMENSION INPUT
+        ===================================================== */
+
+        widthInput.addEventListener(
+            "input",
+            function() {
+
+                if (
+                    ratioCheckbox.checked &&
+                    originalImage
+                ) {
+
+                    const width =
+                        parseInt(
+                            widthInput.value
+                        );
+
+
+                    if (
+                        width &&
+                        width > 0
+                    ) {
+
+                        const height =
+                            Math.round(
+                                width /
+                                aspectRatio
+                            );
+
+
+                        heightInput.value =
+                            height;
+
+                    }
+
+                }
+
+
+                updateOutputPreview();
+
+            }
+        );
+
+
+        heightInput.addEventListener(
+            "input",
+            function() {
+
+                if (
+                    ratioCheckbox.checked &&
+                    originalImage
+                ) {
+
+                    const height =
+                        parseInt(
+                            heightInput.value
+                        );
+
+
+                    if (
+                        height &&
+                        height > 0
+                    ) {
+
+                        const width =
+                            Math.round(
+                                height *
+                                aspectRatio
+                            );
+
+
+                        widthInput.value =
+                            width;
+
+                    }
+
+                }
+
+
+                updateOutputPreview();
+
+            }
+        );
+
+
+        /* =====================================================
+           RATIO SWITCH
+        ===================================================== */
+
+        ratioCheckbox.addEventListener(
+            "change",
+            function() {
+
+                if (
+                    this.checked &&
+                    originalImage
+                ) {
+
+                    const width =
+                        parseInt(
+                            widthInput.value
+                        );
+
+
+                    if (
+                        width &&
+                        width > 0
+                    ) {
+
+                        heightInput.value =
+                            Math.round(
+                                width /
+                                aspectRatio
+                            );
+
+                    }
+
+                }
+
+                updateOutputPreview();
+
+            }
+        );
+
+
+        /* =====================================================
+           FORMAT BUTTONS
+        ===================================================== */
+
+        const formatButtons =
+            document.querySelectorAll(
+                ".format-button"
+            );
+
+
+        formatButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        formatButtons.forEach(
+                            function(btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        selectedFormat =
+                            this.dataset.format;
+
+
+                        resizedBlob = null;
+
+                        downloadButton.classList.remove(
+                            "show"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           RESIZE MODE CHANGE
+        ===================================================== */
+
+        const resizeModes =
+            document.querySelectorAll(
+                'input[name="resizeMode"]'
+            );
+
+
+        resizeModes.forEach(
+            function(radio) {
+
+                radio.addEventListener(
+                    "change",
+                    function() {
+
+                        updateOutputPreview();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           UPDATE OUTPUT PREVIEW
+        ===================================================== */
+
+        function updateOutputPreview() {
+
+            if (!originalImage) {
+
+                return;
+
+            }
+
+
+            const width =
+                parseInt(
+                    widthInput.value
+                );
+
+            const height =
+                parseInt(
+                    heightInput.value
+                );
+
+
+            if (
+                !width ||
+                !height ||
+                width <= 0 ||
+                height <= 0
+            ) {
+
+                outputDimensions.textContent =
+                    "—";
+
+                return;
+
+            }
+
+
+            const mode =
+                document.querySelector(
+                    'input[name="resizeMode"]:checked'
+                ).value;
+
+
+            let finalWidth =
+                width;
+
+            let finalHeight =
+                height;
+
+
+            if (
+                ratioCheckbox.checked &&
+                mode === "fit"
+            ) {
+
+                const ratio =
+                    Math.min(
+                        width / originalWidth,
+                        height / originalHeight
+                    );
+
+
+                finalWidth =
+                    Math.round(
+                        originalWidth * ratio
+                    );
+
+
+                finalHeight =
+                    Math.round(
+                        originalHeight * ratio
+                    );
+
+            }
+
+
+            outputDimensions.textContent =
+                `${finalWidth} × ${finalHeight} px`;
+
+        }
+
+
+        /* =====================================================
+           RESIZE IMAGE
+        ===================================================== */
+
+        resizeButton.addEventListener(
+            "click",
+            function() {
+
+                if (!originalImage) {
+
+                    showMessage(
+                        "Please upload an image first."
+                    );
+
+                    return;
+
+                }
+
+
+                const targetWidth =
+                    parseInt(
+                        widthInput.value
+                    );
+
+                const targetHeight =
+                    parseInt(
+                        heightInput.value
+                    );
+
+
+                if (
+                    !targetWidth ||
+                    !targetHeight ||
+                    targetWidth <= 0 ||
+                    targetHeight <= 0
+                ) {
+
+                    showMessage(
+                        "Please enter valid width and height."
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    targetWidth > 10000 ||
+                    targetHeight > 10000
+                ) {
+
+                    showMessage(
+                        "Maximum supported size is 10000 × 10000 px."
+                    );
+
+                    return;
+
+                }
+
+
+                const mode =
+                    document.querySelector(
+                        'input[name="resizeMode"]:checked'
+                    ).value;
+
+
+                const canvas =
+                    document.createElement(
+                        "canvas"
+                    );
+
+
+                canvas.width =
+                    targetWidth;
+
+                canvas.height =
+                    targetHeight;
+
+
+                const ctx =
+                    canvas.getContext(
+                        "2d"
+                    );
+
+
+                /*
+                 * Better image quality
+                 */
+
+                ctx.imageSmoothingEnabled =
+                    true;
+
+                ctx.imageSmoothingQuality =
+                    "high";
+
+
+                /*
+                 * White background for JPG.
+                 */
+
+                if (
+                    selectedFormat ===
+                    "image/jpeg"
+                ) {
+
+                    ctx.fillStyle =
+                        "#ffffff";
+
+                    ctx.fillRect(
+                        0,
+                        0,
+                        targetWidth,
+                        targetHeight
+                    );
+
+                }
+
+
+                /* =================================================
+                   STRETCH
+                ================================================= */
+
+                if (
+                    mode ===
+                    "stretch"
+                ) {
+
+                    ctx.drawImage(
+                        originalImage,
+                        0,
+                        0,
+                        targetWidth,
+                        targetHeight
+                    );
+
+                }
+
+
+                /* =================================================
+                   FIT
+                ================================================= */
+
+                else if (
+                    mode ===
+                    "fit"
+                ) {
+
+                    const ratio =
+                        Math.min(
+                            targetWidth /
+                                originalWidth,
+
+                            targetHeight /
+                                originalHeight
+                        );
+
+
+                    const drawWidth =
+                        Math.round(
+                            originalWidth *
+                            ratio
+                        );
+
+
+                    const drawHeight =
+                        Math.round(
+                            originalHeight *
+                            ratio
+                        );
+
+
+                    const x =
+                        Math.round(
+                            (
+                                targetWidth -
+                                drawWidth
+                            ) / 2
+                        );
+
+
+                    const y =
+                        Math.round(
+                            (
+                                targetHeight -
+                                drawHeight
+                            ) / 2
+                        );
+
+
+                    ctx.drawImage(
+                        originalImage,
+                        x,
+                        y,
+                        drawWidth,
+                        drawHeight
+                    );
+
+                }
+
+
+                /* =================================================
+                   FILL
+                ================================================= */
+
+                else if (
+                    mode ===
+                    "fill"
+                ) {
+
+                    const ratio =
+                        Math.max(
+                            targetWidth /
+                                originalWidth,
+
+                            targetHeight /
+                                originalHeight
+                        );
+
+
+                    const drawWidth =
+                        Math.round(
+                            originalWidth *
+                            ratio
+                        );
+
+
+                    const drawHeight =
+                        Math.round(
+                            originalHeight *
+                            ratio
+                        );
+
+
+                    const x =
+                        Math.round(
+                            (
+                                targetWidth -
+                                drawWidth
+                            ) / 2
+                        );
+
+
+                    const y =
+                        Math.round(
+                            (
+                                targetHeight -
+                                drawHeight
+                            ) / 2
+                        );
+
+
+                    ctx.drawImage(
+                        originalImage,
+                        x,
+                        y,
+                        drawWidth,
+                        drawHeight
+                    );
+
+                }
+
+
+                /* =================================================
+                   CROP
+                ================================================= */
+
+                else if (
+                    mode ===
+                    "crop"
+                ) {
+
+                    const targetRatio =
+                        targetWidth /
+                        targetHeight;
+
+
+                    const sourceRatio =
+                        originalWidth /
+                        originalHeight;
+
+
+                    let sourceWidth =
+                        originalWidth;
+
+                    let sourceHeight =
+                        originalHeight;
+
+                    let sourceX = 0;
+
+                    let sourceY = 0;
+
+
+                    if (
+                        sourceRatio >
+                        targetRatio
+                    ) {
+
+                        sourceWidth =
+                            Math.round(
+                                originalHeight *
+                                targetRatio
+                            );
+
+
+                        sourceX =
+                            Math.round(
+                                (
+                                    originalWidth -
+                                    sourceWidth
+                                ) / 2
+                            );
+
+                    }
+
+                    else if (
+                        sourceRatio <
+                        targetRatio
+                    ) {
+
+                        sourceHeight =
+                            Math.round(
+                                originalWidth /
+                                targetRatio
+                            );
+
+
+                        sourceY =
+                            Math.round(
+                                (
+                                    originalHeight -
+                                    sourceHeight
+                                ) / 2
+                            );
+
+                    }
+
+
+                    ctx.drawImage(
+                        originalImage,
+
+                        sourceX,
+                        sourceY,
+                        sourceWidth,
+                        sourceHeight,
+
+                        0,
+                        0,
+                        targetWidth,
+                        targetHeight
+                    );
+
+                }
+
+
+                /*
+                 * Determine image quality.
+                 */
+
+                const quality =
+                    selectedFormat ===
+                    "image/png"
+                        ? undefined
+                        : 0.92;
+
+
+                canvas.toBlob(
+                    function(blob) {
+
+                        if (!blob) {
+
+                            showMessage(
+                                "Something went wrong while processing the image."
+                            );
+
+                            return;
+
+                        }
+
+
+                        resizedBlob =
+                            blob;
+
+
+                        outputDimensions.textContent =
+                            `${targetWidth} × ${targetHeight} px`;
+
+
+                        downloadButton.classList.add(
+                            "show"
+                        );
+
+
+                        showMessage(
+                            `Image resized successfully. Output: ${targetWidth} × ${targetHeight} px.`
+                        );
+
+                    },
+
+                    selectedFormat,
+
+                    quality
+
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           DOWNLOAD
+        ===================================================== */
+
+        downloadButton.addEventListener(
+            "click",
+            function() {
+
+                if (!resizedBlob) {
+
+                    showMessage(
+                        "Please resize the image first."
+                    );
+
+                    return;
+
+                }
+
+
+                const downloadUrl =
+                    URL.createObjectURL(
+                        resizedBlob
+                    );
+
+
+                let extension =
+                    "jpg";
+
+
+                if (
+                    selectedFormat ===
+                    "image/png"
+                ) {
+
+                    extension =
+                        "png";
+
+                }
+
+                else if (
+                    selectedFormat ===
+                    "image/webp"
+                ) {
+
+                    extension =
+                        "webp";
+
+                }
+
+
+                const link =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                link.href =
+                    downloadUrl;
+
+
+                link.download =
+                    `designhaven-resized-image.${extension}`;
+
+
+                document.body.appendChild(
+                    link
+                );
+
+
+                link.click();
+
+
+                link.remove();
+
+
+                setTimeout(
+                    function() {
+
+                        URL.revokeObjectURL(
+                            downloadUrl
+                        );
+
+                    },
+                    1000
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        resetButton.addEventListener(
+            "click",
+            function() {
+
+                resetTool();
+
+            }
+        );
+
+
+        function resetTool() {
+
+            originalImage = null;
+
+            originalWidth = 0;
+
+            originalHeight = 0;
+
+            aspectRatio = 1;
+
+            resizedBlob = null;
+
+
+            if (objectUrl) {
+
+                URL.revokeObjectURL(
+                    objectUrl
+                );
+
+                objectUrl = null;
+
+            }
+
+
+            fileInput.value = "";
+
+
+            previewImage.src = "";
+
+
+            uploadArea.style.display =
+                "flex";
+
+
+            imagePreviewWrapper.classList.remove(
+                "active"
+            );
+
+
+            resizeButton.disabled =
+                true;
+
+
+            downloadButton.classList.remove(
+                "show"
+            );
+
+
+            originalDimensions.textContent =
+                "—";
+
+            outputDimensions.textContent =
+                "—";
+
+
+            widthInput.value = "";
+
+            heightInput.value = "";
+
+
+            ratioCheckbox.checked =
+                true;
+
+
+            document.getElementById(
+                "modeFit"
+            ).checked = true;
+
+
+            selectedFormat =
+                "image/jpeg";
+
+
+            formatButtons.forEach(
+                function(button) {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            formatButtons[0].classList.add(
+                "active"
+            );
+
+
+            presetButtons.forEach(
+                function(button) {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            resultMessage.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        function showMessage(message) {
+
+            resultMessage.textContent =
+                message;
+
+            resultMessage.classList.add(
+                "show"
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
