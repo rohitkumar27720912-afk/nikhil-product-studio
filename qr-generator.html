@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>QR Generator | DesignHaven</title>
+
+  <meta
+    name="description"
+    content="Free browser-based QR code generator for URLs, text, phone, WhatsApp, email, SMS, Wi-Fi, vCard, location, events, UPI, business, app links, files and images."
+  >
+
+  <link rel="icon" href="assets/images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- QRCode Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #faf8f4;
+      --card: #ffffff;
+      --soft: #f3ece4;
+      --soft-2: #f8f4ef;
+
+      --text: #2f2923;
+      --muted: #75695e;
+
+      --accent: #a9825b;
+      --accent-dark: #876746;
+
+      --border: #e5d9cc;
+
+      --success: #237a4b;
+      --danger: #a33b32;
+
+      --shadow: 0 20px 60px rgba(71, 53, 37, 0.10);
+
+      --radius: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(169, 130, 91, 0.10),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(169, 130, 91, 0.08),
+          transparent 25%
+        ),
+        var(--bg);
+
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 6%;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(250, 248, 244, 0.88);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(229, 217, 204, 0.8);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+
+      object-fit: contain;
+    }
+
+    .brand span {
+      font-size: 18px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 10px 16px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      color: var(--muted);
+
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+      border-color: var(--accent);
+
+      transform: translateY(-1px);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      text-align: center;
+
+      padding: 72px 20px 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      padding: 8px 13px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.75);
+
+      color: var(--accent-dark);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 70px);
+
+      line-height: 1;
+
+      letter-spacing: -0.055em;
+
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 760px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      line-height: 1.75;
+
+      font-size: 16px;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .tool-shell {
+      width: min(1180px, 92%);
+
+      margin: 34px auto 80px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(320px, 0.92fr);
+
+      gap: 24px;
+
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+    }
+
+    /* =========================
+       FORM CARD
+    ========================= */
+
+    .form-card {
+      padding: 28px;
+    }
+
+    .card-title {
+      font-size: 20px;
+
+      font-weight: 800;
+
+      margin-bottom: 7px;
+    }
+
+    .card-subtitle {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      margin-bottom: 22px;
+    }
+
+    /* =========================
+       TYPE BUTTONS
+    ========================= */
+
+    .type-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 9px;
+
+      margin-bottom: 24px;
+    }
+
+    .type-btn {
+      border: 1px solid var(--border);
+
+      background: #fff;
+
+      color: var(--muted);
+
+      border-radius: 12px;
+
+      padding: 11px 8px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+    .type-btn:hover {
+      border-color: var(--accent);
+
+      color: var(--text);
+    }
+
+    .type-btn.active {
+      background: var(--text);
+
+      border-color: var(--text);
+
+      color: #fff;
+    }
+
+    /* =========================
+       FIELDS
+    ========================= */
+
+    .fields {
+      display: grid;
+
+      gap: 15px;
+    }
+
+    .field {
+      display: grid;
+
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 12px;
+
+      font-weight: 800;
+
+      color: #4e453d;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+
+      padding: 12px 13px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      background: #fff;
+
+      color: var(--text);
+
+      outline: none;
+
+      transition: 0.2s;
+    }
+
+    .field textarea {
+      min-height: 100px;
+
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--accent);
+
+      box-shadow:
+        0 0 0 3px rgba(169, 130, 91, 0.10);
+    }
+
+    .two {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 12px;
+    }
+
+    .three {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr 1fr;
+
+      gap: 12px;
+    }
+
+    /* =========================
+       NOTICE
+    ========================= */
+
+    .notice {
+      padding: 13px 14px;
+
+      border-radius: 13px;
+
+      background: #f8f1e9;
+
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.6;
+    }
+
+    .notice strong {
+      color: var(--text);
+    }
+
+    /* =========================
+       ACTIONS
+    ========================= */
+
+    .actions {
+      display: flex;
+
+      gap: 10px;
+
+      margin-top: 22px;
+    }
+
+    .btn {
+      border: 0;
+
+      border-radius: 13px;
+
+      padding: 13px 18px;
+
+      font-weight: 800;
+
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      flex: 1;
+
+      background: var(--text);
+
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #17130f;
+
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--soft);
+
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #eadfd2;
+    }
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status {
+      min-height: 20px;
+
+      margin-top: 12px;
+
+      font-size: 12px;
+
+      color: var(--muted);
+    }
+
+    .status.success {
+      color: var(--success);
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    /* =========================
+       PREVIEW
+    ========================= */
+
+    .preview-card {
+      padding: 28px;
+
+      position: sticky;
+
+      top: 98px;
+
+      text-align: center;
+    }
+
+    .qr-stage {
+      min-height: 360px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 22px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          45deg,
+          #f2ede7 25%,
+          transparent 25%
+        ),
+        linear-gradient(
+          -45deg,
+          #f2ede7 25%,
+          transparent 25%
+        ),
+        linear-gradient(
+          45deg,
+          transparent 75%,
+          #f2ede7 75%
+        ),
+        linear-gradient(
+          -45deg,
+          transparent 75%,
+          #f2ede7 75%
+        );
+
+      background-size: 24px 24px;
+
+      background-position:
+        0 0,
+        0 12px,
+        12px -12px,
+        -12px 0;
+    }
+
+    #qrOutput {
+      width: 320px;
+
+      max-width: 100%;
+
+      min-height: 40px;
+
+      padding: 12px;
+
+      border-radius: 12px;
+
+      background: #fff;
+
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    #qrOutput img,
+    #qrOutput canvas {
+      display: block;
+
+      max-width: 100%;
+
+      height: auto;
+
+      margin: auto;
+    }
+
+    .empty-qr {
+      color: #9a8d80;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      padding: 35px;
+    }
+
+    /* =========================
+       SIZE
+    ========================= */
+
+    .size-control {
+      margin-top: 20px;
+
+      text-align: left;
+    }
+
+    .size-row {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 8px;
+    }
+
+    .size-row label {
+      font-size: 12px;
+
+      font-weight: 800;
+    }
+
+    #sizeValue {
+      color: var(--accent-dark);
+
+      font-size: 12px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+
+      accent-color: var(--accent);
+    }
+
+    /* =========================
+       DOWNLOAD
+    ========================= */
+
+    .download {
+      width: 100%;
+
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border: 0;
+
+      border-radius: 13px;
+
+      background: var(--accent);
+
+      color: #fff;
+
+      font-weight: 800;
+
+      display: none;
+
+      transition: 0.2s;
+    }
+
+    .download:hover {
+      background: var(--accent-dark);
+
+      transform: translateY(-1px);
+    }
+
+    .privacy {
+      margin-top: 18px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.6;
+    }
+
+    /* =========================
+       INFO
+    ========================= */
+
+    .info-section {
+      width: min(1180px, 92%);
+
+      margin: 0 auto 70px;
+    }
+
+    .info-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 24px;
+    }
+
+    .info-card h3 {
+      font-size: 16px;
+
+      margin-bottom: 9px;
+    }
+
+    .info-card p {
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      color: var(--muted);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      padding: 28px 6%;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      text-align: center;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .tool-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-card {
+        position: static;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 0 4%;
+
+        height: 68px;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .form-card,
+      .preview-card {
+        padding: 19px;
+      }
+
+      .type-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .two,
+      .three {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .qr-stage {
+        min-height: 290px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav class="navbar">
+
+    <a class="brand" href="index.html">
+
+      <img
+        src="assets/images/logo.png"
+        alt="DesignHaven"
+      >
+
+      <span>DesignHaven</span>
+
+    </a>
+
+    <a
+      class="back-link"
+      href="index.html"
+    >
+      ← Back to Home
+    </a>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+
+    <div class="eyebrow">
+      DESIGNHAVEN FREE TOOL
+    </div>
+
+    <h1>
+      QR Code Generator
+    </h1>
+
+    <p>
+      Create professional QR codes for websites, text, WhatsApp,
+      UPI, Wi-Fi, contacts, events, files and images —
+      directly in your browser.
+    </p>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN TOOL
+  ========================= -->
+
+  <main class="tool-shell">
+
+
+    <!-- LEFT -->
+
+    <section class="card form-card">
+
+      <div class="card-title">
+        Create your QR
+      </div>
+
+      <div class="card-subtitle">
+        Choose a QR type, enter your information and generate your code.
+      </div>
+
+
+      <!-- TYPE BUTTONS -->
+
+      <div
+        class="type-grid"
+        id="typeGrid"
+      ></div>
+
+
+      <!-- DYNAMIC FIELDS -->
+
+      <div
+        id="dynamicFields"
+        class="fields"
+      ></div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="actions">
+
+        <button
+          class="btn btn-primary"
+          id="generateBtn"
+          type="button"
+        >
+          Generate QR Code
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          id="resetBtn"
+          type="button"
+        >
+          Reset
+        </button>
+
+      </div>
+
+
+      <div
+        id="status"
+        class="status"
+      ></div>
+
+    </section>
+
+
+    <!-- RIGHT -->
+
+    <aside class="card preview-card">
+
+      <div class="card-title">
+        QR Preview
+      </div>
+
+      <div class="card-subtitle">
+        Your QR code is generated locally in your browser.
+      </div>
+
+
+      <div class="qr-stage">
+
+        <div id="qrOutput">
+
+          <div class="empty-qr">
+            Your QR code will appear here.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- SIZE -->
+
+      <div class="size-control">
+
+        <div class="size-row">
+
+          <label for="qrSize">
+            QR Size
+          </label>
+
+          <strong id="sizeValue">
+            320 × 320
+          </strong>
+
+        </div>
+
+        <input
+          id="qrSize"
+          type="range"
+          min="160"
+          max="1000"
+          value="320"
+          step="10"
+        >
+
+      </div>
+
+
+      <!-- DOWNLOAD -->
+
+      <button
+        class="download"
+        id="downloadBtn"
+        type="button"
+      >
+        Download PNG
+      </button>
+
+
+      <div class="privacy">
+
+        <strong>Browser processing:</strong>
+
+        QR payload generation and QR rendering happen on your device.
+        No QR data is sent to DesignHaven.
+
+      </div>
+
+    </aside>
+
+  </main>
+
+
+  <!-- =========================
+       INFO
+  ========================= -->
+
+  <section class="info-section">
+
+    <div class="info-grid">
+
+
+      <div class="card info-card">
+
+        <h3>
+          🔗 Website & Links
+        </h3>
+
+        <p>
+          Generate QR codes for websites, landing pages,
+          online stores, forms and public URLs.
+        </p>
+
+      </div>
+
+
+      <div class="card info-card">
+
+        <h3>
+          📱 WhatsApp, UPI & Wi-Fi
+        </h3>
+
+        <p>
+          Create ready-to-scan WhatsApp messages,
+          UPI payment links and Wi-Fi connection QR codes.
+        </p>
+
+      </div>
+
+
+      <div class="card info-card">
+
+        <h3>
+          🖼️ Image QR
+        </h3>
+
+        <p>
+          For an image that should open on another phone,
+          use a publicly accessible image URL.
+          The full photo itself should not be embedded into the QR.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    © 2026 DesignHaven.
+    Free browser-based QR Generator.
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* =========================================
+       QR TYPES
+    ========================================= */
+
+    const types = [
+
+      ["url", "🔗 URL"],
+      ["text", "📝 Text"],
+      ["phone", "📞 Phone"],
+      ["whatsapp", "💬 WhatsApp"],
+
+      ["email", "✉️ Email"],
+      ["sms", "📱 SMS"],
+      ["wifi", "📶 Wi-Fi"],
+      ["vcard", "👤 vCard"],
+
+      ["location", "📍 Location"],
+      ["event", "📅 Event"],
+      ["upi", "💳 UPI"],
+      ["business", "🏪 Business"],
+
+      ["app", "📲 App Link"],
+      ["totp", "🔐 TOTP"],
+      ["file", "📄 File URL"],
+      ["photo", "🖼️ Image URL"]
+
+    ];
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const typeGrid =
+      document.getElementById("typeGrid");
+
+    const dynamicFields =
+      document.getElementById("dynamicFields");
+
+    const qrOutput =
+      document.getElementById("qrOutput");
+
+    const generateBtn =
+      document.getElementById("generateBtn");
+
+    const resetBtn =
+      document.getElementById("resetBtn");
+
+    const downloadBtn =
+      document.getElementById("downloadBtn");
+
+    const statusEl =
+      document.getElementById("status");
+
+    const qrSize =
+      document.getElementById("qrSize");
+
+    const sizeValue =
+      document.getElementById("sizeValue");
+
+
+    let currentType = "url";
+
+    let qrInstance = null;
+
+
+    /* =========================================
+       CREATE TYPE BUTTONS
+    ========================================= */
+
+    types.forEach(([id, label]) => {
+
+      const button =
+        document.createElement("button");
+
+      button.type = "button";
+
+      button.className = "type-btn";
+
+      button.dataset.type = id;
+
+      button.textContent = label;
+
+      button.addEventListener(
+        "click",
+        () => selectType(id)
+      );
+
+      typeGrid.appendChild(button);
+
+    });
+
+
+    /* =========================================
+       FIELD HELPERS
+    ========================================= */
+
+    function field(
+      label,
+      id,
+      type = "text",
+      placeholder = "",
+      extra = ""
+    ) {
+
+      return `
+
+        <div class="field">
+
+          <label for="${id}">
+            ${label}
+          </label>
+
+          <input
+            id="${id}"
+            type="${type}"
+            placeholder="${placeholder}"
+            ${extra}
+          >
+
+        </div>
+
+      `;
+
+    }
+
+
+    function textarea(
+      label,
+      id,
+      placeholder = ""
+    ) {
+
+      return `
+
+        <div class="field">
+
+          <label for="${id}">
+            ${label}
+          </label>
+
+          <textarea
+            id="${id}"
+            placeholder="${placeholder}"
+          ></textarea>
+
+        </div>
+
+      `;
+
+    }
+
+
+    /* =========================================
+       SELECT TYPE
+    ========================================= */
+
+    function selectType(type) {
+
+      currentType = type;
+
+
+      document
+        .querySelectorAll(".type-btn")
+        .forEach(btn => {
+
+          btn.classList.toggle(
+            "active",
+            btn.dataset.type === type
+          );
+
+        });
+
+
+      const forms = {
+
+
+        /* URL */
+
+        url: `
+
+          ${field(
+            "Website URL",
+            "url",
+            "url",
+            "https://example.com",
+            "required"
+          )}
+
+          <div class="notice">
+
+            Use a public
+            <strong>HTTP/HTTPS URL</strong>
+            if the QR will be scanned from another device.
+
+          </div>
+
+        `,
+
+
+        /* TEXT */
+
+        text:
+
+          textarea(
+            "Text",
+            "text",
+            "Enter any text..."
+          ),
+
+
+        /* PHONE */
+
+        phone:
+
+          field(
+            "Phone Number",
+            "phone",
+            "tel",
+            "+91 9876543210"
+          ),
+
+
+        /* WHATSAPP */
+
+        whatsapp: `
+
+          ${field(
+            "WhatsApp Number",
+            "phone",
+            "tel",
+            "+919876543210"
+          )}
+
+          ${textarea(
+            "Message",
+            "message",
+            "Hello! I found you through your QR code."
+          )}
+
+        `,
+
+
+        /* EMAIL */
+
+        email: `
+
+          ${field(
+            "Email Address",
+            "to",
+            "email",
+            "hello@example.com"
+          )}
+
+          ${field(
+            "Subject",
+            "subject",
+            "text",
+            "Hello"
+          )}
+
+          ${textarea(
+            "Message",
+            "body",
+            "Your message..."
+          )}
+
+        `,
+
+
+        /* SMS */
+
+        sms: `
+
+          ${field(
+            "Phone Number",
+            "phone",
+            "tel",
+            "+919876543210"
+          )}
+
+          ${textarea(
+            "Message",
+            "message",
+            "Your SMS message..."
+          )}
+
+        `,
+
+
+        /* WIFI */
+
+        wifi: `
+
+          ${field(
+            "Wi-Fi Network Name (SSID)",
+            "ssid",
+            "text",
+            "My WiFi"
+          )}
+
+          ${field(
+            "Password",
+            "password",
+            "text",
+            "WiFi password"
+          )}
+
+          <div class="field">
+
+            <label for="security">
+              Security
+            </label>
+
+            <select id="security">
+
+              <option value="WPA">
+                WPA / WPA2 / WPA3
+              </option>
+
+              <option value="WEP">
+                WEP
+              </option>
+
+              <option value="nopass">
+                No Password
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+
+              <input
+                id="hidden"
+                type="checkbox"
+              >
+
+              Hidden network
+
+            </label>
+
+          </div>
+
+        `,
+
+
+        /* VCARD */
+
+        vcard: `
+
+          <div class="two">
+
+            ${field(
+              "First Name",
+              "first",
+              "text",
+              "Nikhil"
+            )}
+
+            ${field(
+              "Last Name",
+              "last",
+              "text",
+              "Kumar"
+            )}
+
+          </div>
+
+
+          ${field(
+            "Organization",
+            "org",
+            "text",
+            "DesignHaven"
+          )}
+
+
+          <div class="two">
+
+            ${field(
+              "Phone",
+              "phone",
+              "tel",
+              "+919876543210"
+            )}
+
+            ${field(
+              "Email",
+              "email",
+              "email",
+              "hello@example.com"
+            )}
+
+          </div>
+
+
+          ${field(
+            "Website",
+            "website",
+            "url",
+            "https://example.com"
+          )}
+
+
+          ${textarea(
+            "Address",
+            "address",
+            "Full address"
+          )}
+
+        `,
+
+
+        /* LOCATION */
+
+        location: `
+
+          <div class="two">
+
+            ${field(
+              "Latitude",
+              "lat",
+              "number",
+              "25.4358",
+              'step="any"'
+            )}
+
+            ${field(
+              "Longitude",
+              "lng",
+              "number",
+              "81.8463",
+              'step="any"'
+            )}
+
+          </div>
+
+
+          ${field(
+            "Location Label",
+            "label",
+            "text",
+            "My Location"
+          )}
+
+        `,
+
+
+        /* EVENT */
+
+        event: `
+
+          ${field(
+            "Event Title",
+            "title",
+            "text",
+            "My Event"
+          )}
+
+
+          <div class="two">
+
+            ${field(
+              "Start",
+              "start",
+              "datetime-local"
+            )}
+
+            ${field(
+              "End",
+              "end",
+              "datetime-local"
+            )}
+
+          </div>
+
+
+          ${field(
+            "Location",
+            "location",
+            "text",
+            "Event location"
+          )}
+
+
+          ${textarea(
+            "Details",
+            "details",
+            "Event details"
+          )}
+
+        `,
+
+
+        /* UPI */
+
+        upi: `
+
+          ${field(
+            "UPI ID",
+            "pa",
+            "text",
+            "yourname@upi"
+          )}
+
+
+          ${field(
+            "Payee Name",
+            "pn",
+            "text",
+            "Your Name"
+          )}
+
+
+          <div class="two">
+
+            ${field(
+              "Amount",
+              "am",
+              "number",
+              "100",
+              'step="0.01" min="0"'
+            )}
+
+            ${field(
+              "Currency",
+              "cu",
+              "text",
+              "INR"
+            )}
+
+          </div>
+
+
+          ${field(
+            "Payment Note",
+            "note",
+            "text",
+            "Payment for order"
+          )}
+
+        `,
+
+
+        /* BUSINESS */
+
+        business: `
+
+          ${field(
+            "Business Name",
+            "name",
+            "text",
+            "DesignHaven"
+          )}
+
+
+          <div class="two">
+
+            ${field(
+              "Phone",
+              "phone",
+              "tel",
+              "+919876543210"
+            )}
+
+            ${field(
+              "Email",
+              "email",
+              "email",
+              "hello@example.com"
+            )}
+
+          </div>
+
+
+          ${field(
+            "Website",
+            "website",
+            "url",
+            "https://example.com"
+          )}
+
+
+          ${textarea(
+            "Address",
+            "address",
+            "Business address"
+          )}
+
+        `,
+
+
+        /* APP */
+
+        app:
+
+          field(
+            "App / Deep Link URL",
+            "url",
+            "url",
+            "https://example.com/app"
+          ),
+
+
+        /* TOTP */
+
+        totp: `
+
+          ${field(
+            "Secret",
+            "secret",
+            "text",
+            "BASE32SECRET"
+          )}
+
+          ${field(
+            "Issuer",
+            "issuer",
+            "text",
+            "DesignHaven"
+          )}
+
+          ${field(
+            "Account",
+            "account",
+            "text",
+            "user@example.com"
+          )}
+
+
+          <div class="notice">
+
+            The secret is placed inside the QR payload.
+            Only use this for a secret you are comfortable
+            encoding into a QR.
+
+          </div>
+
+        `,
+
+
+        /* FILE */
+
+        file: `
+
+          ${field(
+            "Public File URL",
+            "url",
+            "url",
+            "https://example.com/file.pdf"
+          )}
+
+          <div class="notice">
+
+            The file must be hosted at a URL accessible
+            to the device scanning the QR.
+
+          </div>
+
+        `,
+
+
+        /* PHOTO */
+
+        photo: `
+
+          ${field(
+            "Public Image URL",
+            "url",
+            "url",
+            "https://example.com/photo.jpg",
+            "required"
+          )}
+
+
+          <div class="notice">
+
+            <strong>Important:</strong>
+
+            The QR contains the image URL,
+            not the entire photo.
+
+            A normal high-resolution photo is much too large
+            to store directly inside a QR code.
+
+          </div>
+
+
+          <div class="photo-box">
+
+            <div class="field">
+
+              <label for="photoFile">
+                Optional image preview
+              </label>
+
+              <input
+                id="photoFile"
+                type="file"
+                accept="image/*"
+              >
+
+            </div>
+
+
+            <img
+              id="photoPreview"
+              class="photo-preview"
+              alt="Selected image preview"
+            >
+
+          </div>
+
+        `
+
+      };
+
+
+      dynamicFields.innerHTML =
+        forms[type] || forms.url;
+
+
+      /* PHOTO PREVIEW */
+
+      const photoFile =
+        document.getElementById("photoFile");
+
+
+      if (photoFile) {
+
+        photoFile.addEventListener(
+          "change",
+          () => {
+
+            const file =
+              photoFile.files[0];
+
+            if (!file) return;
+
+
+            const preview =
+              document.getElementById(
+                "photoPreview"
+              );
+
+
+            const objectURL =
+              URL.createObjectURL(file);
+
+
+            preview.src = objectURL;
+
+            preview.style.display = "block";
+
+
+            preview.onload = () => {
+
+              URL.revokeObjectURL(
+                objectURL
+              );
+
+            };
+
+          }
+        );
+
+      }
+
+
+      clearStatus();
+
+    }
+
+
+    /* =========================================
+       GET VALUE
+    ========================================= */
+
+    function val(id) {
+
+      const element =
+        document.getElementById(id);
+
+      return element
+        ? element.value.trim()
+        : "";
+
+    }
+
+
+    /* =========================================
+       URL ENCODING
+    ========================================= */
+
+    function enc(value) {
+
+      return encodeURIComponent(
+        value || ""
+      );
+
+    }
+
+
+    /* =========================================
+       WIFI ESCAPE
+    ========================================= */
+
+    function escapeWifi(value) {
+
+      return String(value || "")
+        .replace(
+          /([\\;,:"])/g,
+          "\\$1"
+        );
+
+    }
+
+
+    /* =========================================
+       BUILD PAYLOAD
+    ========================================= */
+
+    function buildPayload() {
+
+
+      switch (currentType) {
+
+
+        /* URL / APP / FILE / PHOTO */
+
+        case "url":
+        case "app":
+        case "file":
+        case "photo":
+
+          return val("url");
+
+
+        /* TEXT */
+
+        case "text":
+
+          return val("text");
+
+
+        /* PHONE */
+
+        case "phone":
+
+          return `tel:${val("phone")}`;
+
+
+        /* WHATSAPP */
+
+        case "whatsapp": {
+
+          const phone =
+            val("phone")
+              .replace(/[^\d+]/g, "");
+
+          if (!phone) {
+
+            throw new Error(
+              "Enter a WhatsApp number."
+            );
+
+          }
+
+
+          return `https://wa.me/${phone.replace("+", "")}?text=${enc(val("message"))}`;
+
+        }
+
+
+        /* EMAIL */
+
+        case "email":
+
+          return `mailto:${val("to")}?subject=${enc(val("subject"))}&body=${enc(val("body"))}`;
+
+
+        /* SMS */
+
+        case "sms":
+
+          return `SMSTO:${val("phone")}:${val("message")}`;
+
+
+        /* WIFI */
+
+        case "wifi": {
+
+          const security =
+            val("security");
+
+          const ssid =
+            escapeWifi(val("ssid"));
+
+          const password =
+            escapeWifi(val("password"));
+
+          const hidden =
+            document.getElementById("hidden")
+              ?.checked
+              ? "true"
+              : "false";
+
+
+          return `WIFI:T:${security};S:${ssid};P:${password};H:${hidden};;`;
+
+        }
+
+
+        /* VCARD */
+
+        case "vcard": {
+
+          const first =
+            val("first");
+
+          const last =
+            val("last");
+
+          const fullName =
+            `${first} ${last}`.trim();
+
+
+          return [
+
+            "BEGIN:VCARD",
+
+            "VERSION:3.0",
+
+            `N:${escapeWifi(last)};${escapeWifi(first)};;;`,
+
+            `FN:${escapeWifi(fullName)}`,
+
+            `ORG:${escapeWifi(val("org"))}`,
+
+            `TEL:${val("phone")}`,
+
+            `EMAIL:${val("email")}`,
+
+            `URL:${val("website")}`,
+
+            `ADR:;;${escapeWifi(val("address"))};;;;`,
+
+            "END:VCARD"
+
+          ].join("\n");
+
+        }
+
+
+        /* LOCATION */
+
+        case "location": {
+
+          const lat =
+            val("lat");
+
+          const lng =
+            val("lng");
+
+          const label =
+            val("label");
+
+
+          if (!lat || !lng) {
+
+            throw new Error(
+              "Enter latitude and longitude."
+            );
+
+          }
+
+
+          if (label) {
+
+            return `geo:${lat},${lng}?q=${enc(`${lat},${lng} (${label})`)}`;
+
+          }
+
+
+          return `geo:${lat},${lng}`;
+
+        }
+
+
+        /* EVENT */
+
+        case "event": {
+
+          const start =
+            val("start")
+              .replace(/[-:]/g, "")
+              .replace("T", "");
+
+          const end =
+            val("end")
+              .replace(/[-:]/g, "")
+              .replace("T", "");
+
+
+          return [
+
+            "BEGIN:VEVENT",
+
+            `SUMMARY:${val("title")}`,
+
+            start
+              ? `DTSTART:${start}`
+              : "",
+
+            end
+              ? `DTEND:${end}`
+              : "",
+
+            `LOCATION:${val("location")}`,
+
+            `DESCRIPTION:${val("details")}`,
+
+            "END:VEVENT"
+
+          ]
+            .filter(Boolean)
+            .join("\n");
+
+        }
+
+
+        /* UPI */
+
+        case "upi": {
+
+          const params =
+            new URLSearchParams();
+
+
+          params.set(
+            "pa",
+            val("pa")
+          );
+
+
+          params.set(
+            "pn",
+            val("pn")
+          );
+
+
+          if (val("am")) {
+
+            params.set(
+              "am",
+              val("am")
+            );
+
+          }
+
+
+          params.set(
+            "cu",
+            val("cu") || "INR"
+          );
+
+
+          if (val("note")) {
+
+            params.set(
+              "tn",
+              val("note")
+            );
+
+          }
+
+
+          return `upi://pay?${params.toString()}`;
+
+        }
+
+
+        /* BUSINESS */
+
+        case "business":
+
+          return [
+
+            val("name"),
+
+            val("phone"),
+
+            val("email"),
+
+            val("website"),
+
+            val("address")
+
+          ]
+            .filter(Boolean)
+            .join("\n");
+
+
+        /* TOTP */
+
+        case "totp": {
+
+          const secret =
+            val("secret");
+
+          const issuer =
+            val("issuer");
+
+          const account =
+            val("account");
+
+
+          if (!secret) {
+
+            throw new Error(
+              "Enter the TOTP secret."
+            );
+
+          }
+
+
+          return `otpauth://totp/${encodeURIComponent(
+            issuer
+              ? `${issuer}:${account}`
+              : account
+          )}?secret=${encodeURIComponent(secret)}&issuer=${encodeURIComponent(issuer)}`;
+
+        }
+
+
+        default:
+
+          return "";
+
+      }
+
+    }
+
+
+    /* =========================================
+       VALIDATE
+    ========================================= */
+
+    function validatePayload(payload) {
+
+
+      if (!payload) {
+
+        throw new Error(
+          "Please enter the required information."
+        );
+
+      }
+
+
+      /* URL */
+
+      if (
+        [
+          "url",
+          "app",
+          "file",
+          "photo"
+        ].includes(currentType)
+      ) {
+
+        try {
+
+          const parsed =
+            new URL(payload);
+
+
+          if (
+            ![
+              "http:",
+              "https:"
+            ].includes(
+              parsed.protocol
+            )
+          ) {
+
+            throw new Error();
+
+          }
+
+        } catch {
+
+          throw new Error(
+            "Please enter a valid HTTP/HTTPS URL."
+          );
+
+        }
+
+      }
+
+
+      /* LOCATION */
+
+      if (
+        currentType === "location"
+      ) {
+
+        const lat =
+          Number(val("lat"));
+
+        const lng =
+          Number(val("lng"));
+
+
+        if (
+          !Number.isFinite(lat) ||
+          lat < -90 ||
+          lat > 90 ||
+
+          !Number.isFinite(lng) ||
+          lng < -180 ||
+          lng > 180
+        ) {
+
+          throw new Error(
+            "Enter valid latitude and longitude."
+          );
+
+        }
+
+      }
+
+
+      /* UPI */
+
+      if (
+        currentType === "upi" &&
+        !val("pa")
+      ) {
+
+        throw new Error(
+          "Enter a UPI ID."
+        );
+
+      }
+
+
+      /* WIFI */
+
+      if (
+        currentType === "wifi" &&
+        !val("ssid")
+      ) {
+
+        throw new Error(
+          "Enter the Wi-Fi network name."
+        );
+
+      }
+
+
+      /* EMAIL */
+
+      if (
+        currentType === "email" &&
+        !val("to")
+      ) {
+
+        throw new Error(
+          "Enter an email address."
+        );
+
+      }
+
+    }
+
+
+    /* =========================================
+       GENERATE QR
+    ========================================= */
+
+    function generateQR() {
+
+      try {
+
+        const payload =
+          buildPayload();
+
+
+        validatePayload(
+          payload
+        );
+
+
+        qrOutput.innerHTML = "";
+
+
+        const size =
+          Number(qrSize.value);
+
+
+        qrInstance =
+          new QRCode(
+            qrOutput,
+            {
+
+              text: payload,
+
+              width: size,
+
+              height: size,
+
+              colorDark: "#2f2923",
+
+              colorLight: "#ffffff",
+
+              correctLevel:
+                QRCode.CorrectLevel.M
+
+            }
+          );
+
+
+        downloadBtn.style.display =
+          "block";
+
+
+        setStatus(
+          "QR code generated successfully.",
+          "success"
+        );
+
+      } catch (error) {
+
+        downloadBtn.style.display =
+          "none";
+
+
+        setStatus(
+          error.message ||
+          "Could not generate the QR code.",
+          "error"
+        );
+
+      }
+
+    }
+
+
+    /* =========================================
+       DOWNLOAD QR
+    ========================================= */
+
+    function downloadQR() {
+
+
+      const canvas =
+        qrOutput.querySelector(
+          "canvas"
+        );
+
+
+      const img =
+        qrOutput.querySelector(
+          "img"
+        );
+
+
+      if (canvas) {
+
+        const link =
+          document.createElement("a");
+
+
+        link.download =
+          `designhaven-${currentType}-qr.png`;
+
+
+        link.href =
+          canvas.toDataURL(
+            "image/png"
+          );
+
+
+        document.body.appendChild(
+          link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
+
+        return;
+
+      }
+
+
+      if (img) {
+
+        const link =
+          document.createElement("a");
+
+
+        link.download =
+          `designhaven-${currentType}-qr.png`;
+
+
+        link.href =
+          img.src;
+
+
+        document.body.appendChild(
+          link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
+      }
+
+    }
+
+
+    /* =========================================
+       STATUS
+    ========================================= */
+
+    function setStatus(
+      message,
+      type = ""
+    ) {
+
+      statusEl.textContent =
+        message;
+
+      statusEl.className =
+        `status ${type}`;
+
+    }
+
+
+    function clearStatus() {
+
+      statusEl.textContent =
+        "";
+
+      statusEl.className =
+        "status";
+
+    }
+
+
+    /* =========================================
+       RESET
+    ========================================= */
+
+    function resetAll() {
+
+      currentType =
+        "url";
+
+
+      selectType("url");
+
+
+      qrOutput.innerHTML = `
+
+        <div class="empty-qr">
+          Your QR code will appear here.
+        </div>
+
+      `;
+
+
+      downloadBtn.style.display =
+        "none";
+
+
+      qrSize.value =
+        320;
+
+
+      sizeValue.textContent =
+        "320 × 320";
+
+
+      clearStatus();
+
+    }
+
+
+    /* =========================================
+       SIZE SLIDER
+    ========================================= */
+
+    qrSize.addEventListener(
+      "input",
+      () => {
+
+        sizeValue.textContent =
+          `${qrSize.value} × ${qrSize.value}`;
+
+      }
+    );
+
+
+    /* =========================================
+       EVENTS
+    ========================================= */
+
+    generateBtn.addEventListener(
+      "click",
+      generateQR
+    );
+
+
+    downloadBtn.addEventListener(
+      "click",
+      downloadQR
+    );
+
+
+    resetBtn.addEventListener(
+      "click",
+      resetAll
+    );
+
+
+    /* =========================================
+       INITIAL TYPE
+    ========================================= */
+
+    selectType("url");
+
+  </script>
+
+</body>
+</html>
