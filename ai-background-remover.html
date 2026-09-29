@@ -2508,8 +2508,8 @@
     ========================= */
 
     rembgConfig.setCustomModelPath(
-    "isnet-general-use",
-    "https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx"
+        "isnet-general-use",
+        "/assets/models/isnet-general-use.onnx"
     );
 
 
@@ -2655,8 +2655,8 @@
                     "isnet-general-use",
                     undefined,
                     {
-                        bypassSessionCache: true,
-                        bypassModelCache: true,
+                        bypassSessionCache: false,
+                        bypassModelCache: false,
                         executionProviders: ["wasm"],
                         onProgress: updateProgress
                     }
